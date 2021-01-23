@@ -41,6 +41,13 @@ void menuSobre(void) {
     printf("///  desenvolvidos pelos alunos ao longo da disciplina. Serve como um guia  ///\n");
     printf("///  de consulta e referência para o desenvolvidos dos demais projetos.     ///\n");
     printf("///                                                                         ///\n");
+    printf("///  Bem vindos a SIG-Fantasy, o melhor local para alugar fantasias e       ///\n");
+    printf("///  roupas do Brasil, aqui você poderá alugar os seus looks pelo melhor    ///\n");
+    printf("///  preço do mercado. Está indo para uma festa fantasia e ainda não sabe o ///\n");
+    printf("///  que vestir? Veja as fantasias disponíveis e se divirta como nunca!     ///\n");
+    printf("///                                                                         ///\n");
+    printf("///  Atenção: em caso de atrasos, a SIG-Fantasy cobra R$2,00 a cada dia     ///\n");
+    printf("///  pendente!                                                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
