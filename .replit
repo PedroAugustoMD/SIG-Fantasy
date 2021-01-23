@@ -1,0 +1,2 @@
+language = "c"
+run = "clang-7 -pthread -lm -o SIG-Fantasy sigFantasy.c && ./SIG-Fantasy"
