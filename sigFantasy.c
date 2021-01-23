@@ -3,9 +3,9 @@
 ///                 Centro de Ensino Superior do Seridó                     ///
 ///               Departamento de Computação e Tecnologia                   ///
 ///                  Disciplina DCT1106 -- Programação                      ///
-///                  Projeto Sistema de Gestão Escolar                      ///
-///                Developed by  @PedroAugustoMD and @leonardodantas4 -     ///
-///                          Jan, 2021                                      ///
+///             Projeto Sistema de Aluguéis de Roupas e Fantasias           ///
+///            Developed by  @PedroAugustoMD and @leonardodantas4           ///
+///                             Jan, 2021                                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -27,8 +27,9 @@ void menuSobre(void) {
     printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
     printf("///               Departamento de Computação e Tecnologia                   ///\n");
     printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                  Projeto Sistema de Gestão Escolar                      ///\n");
-    printf("///                Developed by  @flgorgonio - Jan, 2021                    ///\n");
+    printf("///             Projeto Sistema de Aluguéis de Roupas e Fantasias           ///\n");
+    printf("///            Developed by  @PedroAugustoMD and @leonardodantas4           ///\n");
+    printf("///                             Jan, 2021                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
