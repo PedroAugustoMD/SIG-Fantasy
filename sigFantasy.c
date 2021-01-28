@@ -13,11 +13,15 @@
 
 void menuSobre(void);
 void menuPrincipal(void);
+void menuCliente(void);
+void menuFantasia(void);
 
 
 int main(void) {
     menuSobre();
     menuPrincipal();
+    menuCliente();
+    menuFantasia();
     return 0;
 
 }
@@ -38,7 +42,7 @@ void menuPrincipal(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = = =  Menu Principal = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = Menu Principal  = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Módulo do cliente                                        ///\n");
@@ -53,7 +57,7 @@ void menuPrincipal(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
 
@@ -90,4 +94,75 @@ void menuSobre(void) {
     printf("///  pendente!                                                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+	  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	  getchar();
+}
+
+
+void menuCliente(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = Menu Cliente = = = = = = = = =            ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Cadastrar um novo cliente                                ///\n");
+	printf("///           2. Pesquisar os dados de um cliente                         ///\n");
+	printf("///           3. Atualizar o cadastro de um cliente                       ///\n");
+	printf("///           4. Excluir um cliente do sistema                            ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void menuFantasia(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = Menu Fantasia = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Cadastrar uma nova fantasia                              ///\n");
+	printf("///           2. Pesquisar uma fantasia                                   ///\n");
+	printf("///           3. Atualizar o cadastro de uma fantasia                     ///\n");
+	printf("///           4. Excluir uma fantasia do sistema                          ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
 }
