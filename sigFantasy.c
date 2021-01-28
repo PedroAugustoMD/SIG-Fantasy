@@ -9,15 +9,53 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void menuSobre(void);
+void menuPrincipal(void);
+
 
 int main(void) {
     menuSobre();
+    menuPrincipal();
     return 0;
 
 }
 
+void menuPrincipal(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = =  Menu Principal = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Módulo do cliente                                        ///\n");
+	printf("///           2. Módulo de fantasia                                       ///\n");
+	printf("///           3. Módulo de empréstimo                                     ///\n");
+	printf("///           4. Módulo de relatório                                      ///\n");
+	printf("///           5. Informações sobre o sistema                              ///\n");
+	printf("///           0. Encerra o programa                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
 
 void menuSobre(void) {
     printf("\n");
