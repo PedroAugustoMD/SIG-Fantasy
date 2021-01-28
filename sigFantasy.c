@@ -15,6 +15,9 @@ void menuSobre(void);
 void menuPrincipal(void);
 void menuCliente(void);
 void menuFantasia(void);
+void menuAlugueis(void);
+void menuRelatorios(void);
+
 
 
 int main(void) {
@@ -22,6 +25,8 @@ int main(void) {
     menuPrincipal();
     menuCliente();
     menuFantasia();
+    menuAlugueis();
+    menuRelatorios();
     return 0;
 
 }
@@ -47,7 +52,7 @@ void menuPrincipal(void) {
 	printf("///                                                                       ///\n");
 	printf("///           1. Módulo do cliente                                        ///\n");
 	printf("///           2. Módulo de fantasia                                       ///\n");
-	printf("///           3. Módulo de empréstimo                                     ///\n");
+	printf("///           3. Módulo de aluguéis                                       ///\n");
 	printf("///           4. Módulo de relatório                                      ///\n");
 	printf("///           5. Informações sobre o sistema                              ///\n");
 	printf("///           0. Encerra o programa                                       ///\n");
@@ -156,6 +161,74 @@ void menuFantasia(void) {
 	printf("///           2. Pesquisar uma fantasia                                   ///\n");
 	printf("///           3. Atualizar o cadastro de uma fantasia                     ///\n");
 	printf("///           4. Excluir uma fantasia do sistema                          ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void menuAlugueis(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = Menu Alugueis = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Alugar uma fantasia                                      ///\n");
+	printf("///           2. Devolver uma fantasia                                    ///\n");
+	printf("///           3. Atualizar o cadastro de uma fantasia                     ///\n");
+	printf("///           4. Listar fantasias disponíveis                             ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void menuRelatorios(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = Menu Relatório = = = = = = = = =          ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Histórico de aluguéis                                    ///\n");
+	printf("///           2. Verificar datas                                          ///\n");
+	printf("///           3. Cliente mais fiel                                        ///\n");
+	printf("///           4. Fantasia mais alugada                                    ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
