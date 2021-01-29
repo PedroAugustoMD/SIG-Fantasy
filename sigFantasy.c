@@ -17,6 +17,7 @@ void menuCliente(void);
 void menuFantasia(void);
 void menuAlugueis(void);
 void menuRelatorios(void);
+void telaCadastrarCliente(void);
 
 
 
@@ -27,6 +28,7 @@ int main(void) {
     menuFantasia();
     menuAlugueis();
     menuRelatorios();
+    telaCadastrarCliente();
     return 0;
 
 }
@@ -237,5 +239,36 @@ void menuRelatorios(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void telaCadastrarCliente(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = Cadastrar Cliente = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           CPF:                                                        ///\n");
+	printf("///           Nome:                                                       ///\n");
+	printf("///           E-mail:                                                     ///\n");
+	printf("///           Telefone:                                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
