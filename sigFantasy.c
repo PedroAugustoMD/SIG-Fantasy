@@ -18,7 +18,7 @@ void menuFantasia(void);
 void menuAlugueis(void);
 void menuRelatorios(void);
 void telaCadastrarCliente(void);
-
+void telaPesquisarCliente(void);
 
 
 int main(void) {
@@ -29,6 +29,7 @@ int main(void) {
     menuAlugueis();
     menuRelatorios();
     telaCadastrarCliente();
+    telaPesquisarCliente();
     return 0;
 
 }
@@ -265,6 +266,34 @@ void telaCadastrarCliente(void) {
 	printf("///           Nome:                                                       ///\n");
 	printf("///           E-mail:                                                     ///\n");
 	printf("///           Telefone:                                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void telaPesquisarCliente(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = Pesquisar Cliente = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           CPF:                                                        ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
