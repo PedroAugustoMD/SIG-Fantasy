@@ -25,6 +25,9 @@ void telaCadastrarFantasia(void);
 void telaPesquisarFantasia(void);
 void telaAtualizarFantasia(void);
 void telaExcluirFantasia(void);
+void telaAlugarFantasia(void);
+void telaDevolverFantasia(void);
+void telaListarFantasia(void);
 
 
 int main(void) {
@@ -42,6 +45,9 @@ int main(void) {
     telaPesquisarFantasia();
     telaAtualizarFantasia();
     telaExcluirFantasia();
+    telaAlugarFantasia();
+    telaDevolverFantasia();
+    telaListarFantasia();
     return 0;
 
 }
@@ -208,8 +214,7 @@ void menuAlugueis(void) {
 	printf("///                                                                       ///\n");
 	printf("///           1. Alugar uma fantasia                                      ///\n");
 	printf("///           2. Devolver uma fantasia                                    ///\n");
-	printf("///           3. Atualizar o cadastro de uma fantasia                     ///\n");
-	printf("///           4. Listar fantasias disponíveis                             ///\n");
+	printf("///           3. Listar fantasias disponíveis                             ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -476,6 +481,90 @@ void telaExcluirFantasia(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           ID:                                                         ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void telaAlugarFantasia(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = Alugar Fantasia = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           Digite o seu CPF:                                           ///\n");
+	printf("///           Digite o ID da Fantasia:                                    ///\n");
+	printf("///           Confirma aluguel (s/n)?                                     ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void telaDevolverFantasia(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = Devolver Fantasia = = = = = = = =           ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Digite o seu CPF:                                           ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void telaListarFantasia(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = Listar Fantasia = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Fantasias disponíveis:                                      ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
