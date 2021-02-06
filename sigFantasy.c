@@ -61,7 +61,7 @@ int main(void) {
 
 }
 
-void menuPrincipal(void) {
+char menuPrincipal(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -134,7 +134,7 @@ void menuSobre(void) {
 }
 
 
-void menuCliente(void) {
+char menuCliente(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -168,7 +168,7 @@ void menuCliente(void) {
 	getchar();
 }
 
-void menuFantasia(void) {
+char menuFantasia(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -202,7 +202,7 @@ void menuFantasia(void) {
 	getchar();
 }
 
-void menuAlugueis(void) {
+char menuAlugueis(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -235,7 +235,7 @@ void menuAlugueis(void) {
 	getchar();
 }
 
-void menuRelatorios(void) {
+char menuRelatorios(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
