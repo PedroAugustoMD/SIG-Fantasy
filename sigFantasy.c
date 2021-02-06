@@ -416,6 +416,9 @@ void telaExcluirCliente(void) {
 }
 
 void telaCadastrarFantasia(void) {
+    char id[11];
+	  char nomeFantasia[51];
+	  float valorAluguel;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -434,9 +437,16 @@ void telaCadastrarFantasia(void) {
 	printf("///           = = = = = = = = Cadastrar Fantasia = = = = = = = =          ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           ID:                                                         ///\n");
-	printf("///           Nome da fantasia                                            ///\n");
-	printf("///           Valor do aluguel:                                           ///\n");
+	printf("///           ID (Apenas números!): ");
+  scanf("%[0-9]", id);
+  getchar();
+	printf("///           Nome da fantasia: ");
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomeFantasia);
+  getchar();
+	printf("///           Valor do aluguel: ");
+  scanf("%f", &valorAluguel);
+  getchar();
+  printf("%f", valorAluguel);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
