@@ -332,6 +332,7 @@ void telaCadastrarCliente(void) {
 }
 
 void telaPesquisarCliente(void) {
+    char cpf[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -350,7 +351,9 @@ void telaPesquisarCliente(void) {
 	printf("///           = = = = = = = = Pesquisar Cliente = = = = = = = =           ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           CPF:                                                        ///\n");
+	printf("///           CPF: ");
+  scanf("%[0-9]", cpf);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -360,6 +363,8 @@ void telaPesquisarCliente(void) {
 }
 
 void telaAtualizarCliente(void) {
+    char cpf[11];
+    char item[8];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -378,8 +383,12 @@ void telaAtualizarCliente(void) {
 	printf("///           = = = = = = = = Atualizar Cliente = = = = = = = =           ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Digite o CPF do cliente:                                    ///\n");
-	printf("///           Digite o item a ser atualizado:                             ///\n");
+	printf("///           Digite o CPF do cliente: ");
+  scanf("%[0-9]", cpf);
+  getchar();
+	printf("///           Digite o item a ser atualizado: ");
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", item);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -388,6 +397,7 @@ void telaAtualizarCliente(void) {
 }
 
 void telaExcluirCliente(void) {
+      char cpf[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -406,7 +416,9 @@ void telaExcluirCliente(void) {
 	printf("///           = = = = = = = = Excluir Cliente = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           CPF:                                                        ///\n");
+	printf("///           CPF: ");
+  scanf("%[0-9]", cpf);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
