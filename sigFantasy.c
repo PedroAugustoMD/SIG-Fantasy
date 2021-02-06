@@ -294,10 +294,10 @@ char menuRelatorios(void) {
 }
 
 void telaCadastrarCliente(void) {
-  char cpf[11];
-	char nome[51];
-	char email[51];
-	char telefone[12];
+  char cpf[12];
+	char nome[52];
+	char email[52];
+	char telefone[13];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -337,7 +337,7 @@ void telaCadastrarCliente(void) {
 }
 
 void telaPesquisarCliente(void) {
-    char cpf[11];
+    char cpf[12];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -368,8 +368,8 @@ void telaPesquisarCliente(void) {
 }
 
 void telaAtualizarCliente(void) {
-    char cpf[11];
-    char item[8];
+    char cpf[12];
+    char item[9];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -402,7 +402,7 @@ void telaAtualizarCliente(void) {
 }
 
 void telaExcluirCliente(void) {
-      char cpf[11];
+      char cpf[12];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -433,8 +433,8 @@ void telaExcluirCliente(void) {
 }
 
 void telaCadastrarFantasia(void) {
-    char id[11];
-	  char nome[51];
+    char id[12];
+	  char nome[52];
 	  float valor;
     system("clear");
 	printf("\n");
@@ -472,7 +472,7 @@ void telaCadastrarFantasia(void) {
 }
 
 void telaPesquisarFantasia(void) {
-    char id[11];
+    char id[12];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -503,8 +503,8 @@ void telaPesquisarFantasia(void) {
 }
 
 void telaAtualizarFantasia(void) {
-    char id[11];
-    char item[5];
+    char id[12];
+    char item[6];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -537,7 +537,7 @@ void telaAtualizarFantasia(void) {
 }
 
 void telaExcluirFantasia(void) {
-    char id[11];
+    char id[12];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -568,9 +568,9 @@ void telaExcluirFantasia(void) {
 }
 
 void telaAlugarFantasia(void) {
-  char cpf[11];
-  char id[11];
-  char confirmacao[1];
+  char cpf[12];
+  char id[12];
+  char confirmacao[2];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -606,7 +606,7 @@ void telaAlugarFantasia(void) {
 }
 
 void telaDevolverFantasia(void) {
-  char cpf[11];
+  char cpf[12];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -693,6 +693,8 @@ void telaHistoricoFantasia(void) {
 }
 
 void telaVerificarDatas(void) {
+  char escolha[2];
+  char data[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -711,8 +713,12 @@ void telaVerificarDatas(void) {
 	printf("///           = = = = = = = = Verificar Datas = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Digite D(dia), M(mês) ou A(ano):                            ///\n");
-	printf("///           Digite a data a ser analisada                               ///\n");
+	printf("///           Digite D(dia), M(mês) ou A(ano): ");
+  scanf("%[DMAdma]", escolha);
+  getchar();
+	printf("///           Digite a data a ser analisada: ");
+  scanf("%[0-9/]", data);
+	getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
