@@ -62,6 +62,7 @@ int main(void) {
 }
 
 char menuPrincipal(void) {
+    char op;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -87,13 +88,16 @@ char menuPrincipal(void) {
 	printf("///           5. Informações sobre o sistema                              ///\n");
 	printf("///           0. Encerra o programa                                       ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
   printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return op;
+
 }
 
 void menuSobre(void) {
@@ -127,6 +131,7 @@ void menuSobre(void) {
     printf("///                                                                         ///\n");
     printf("///  Atenção: em caso de atrasos, a SIG-Fantasy cobra R$2,00 a cada dia     ///\n");
     printf("///  pendente!                                                              ///\n");
+    printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 	  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -135,6 +140,7 @@ void menuSobre(void) {
 
 
 char menuCliente(void) {
+  char op;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -159,16 +165,20 @@ char menuCliente(void) {
 	printf("///           4. Excluir um cliente do sistema                            ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return op;
+
 }
 
 char menuFantasia(void) {
+  char op;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -193,16 +203,20 @@ char menuFantasia(void) {
 	printf("///           4. Excluir uma fantasia do sistema                          ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return op;
+
 }
 
 char menuAlugueis(void) {
+  char op;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -226,16 +240,19 @@ char menuAlugueis(void) {
 	printf("///           3. Listar fantasias disponíveis                             ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada:                                   ///\n");
-	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
+  printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return op;
 }
 
 char menuRelatorios(void) {
+  char op;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -260,13 +277,15 @@ char menuRelatorios(void) {
 	printf("///           4. Fantasia mais alugada                                    ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return op;
 }
 
 void telaCadastrarCliente(void) {
