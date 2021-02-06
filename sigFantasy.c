@@ -12,11 +12,11 @@
 #include <stdlib.h>
 
 void menuSobre(void);
-void menuPrincipal(void);
-void menuCliente(void);
-void menuFantasia(void);
-void menuAlugueis(void);
-void menuRelatorios(void);
+char menuPrincipal(void);
+char menuCliente(void);
+char menuFantasia(void);
+char menuAlugueis(void);
+char menuRelatorios(void);
 void telaCadastrarCliente(void);
 void telaPesquisarCliente(void);
 void telaAtualizarCliente(void);
@@ -35,12 +35,13 @@ void telaFantasiaMaisAlugada(void);
 
 
 int main(void) {
+    char opcao;
     menuSobre();
-    menuPrincipal();
-    menuCliente();
-    menuFantasia();
-    menuAlugueis();
-    menuRelatorios();
+    opcao = menuPrincipal();
+    opcao = menuCliente();
+    opcao = menuFantasia();
+    opcao = menuAlugueis();
+    opcao = menuRelatorios();
     telaCadastrarCliente();
     telaPesquisarCliente();
     telaAtualizarCliente();
@@ -515,6 +516,7 @@ void telaAlugarFantasia(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = Alugar Fantasia = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+  printf("///                                                                       ///\n");
 	printf("///           Digite o seu CPF:                                           ///\n");
 	printf("///           Digite o ID da Fantasia:                                    ///\n");
 	printf("///           Confirma aluguel (s/n)?                                     ///\n");
