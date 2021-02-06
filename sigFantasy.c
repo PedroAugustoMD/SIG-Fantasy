@@ -90,6 +90,7 @@ char menuPrincipal(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -167,6 +168,7 @@ char menuCliente(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -205,6 +207,7 @@ char menuFantasia(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -242,6 +245,7 @@ char menuAlugueis(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
+  getchar();
   printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -279,6 +283,7 @@ char menuRelatorios(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -429,8 +434,8 @@ void telaExcluirCliente(void) {
 
 void telaCadastrarFantasia(void) {
     char id[11];
-	  char nomeFantasia[51];
-	  float valorAluguel;
+	  char nome[51];
+	  float valor;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -453,12 +458,11 @@ void telaCadastrarFantasia(void) {
   scanf("%[0-9]", id);
   getchar();
 	printf("///           Nome da fantasia: ");
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomeFantasia);
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
   getchar();
 	printf("///           Valor do aluguel: ");
-  scanf("%f", &valorAluguel);
+  scanf("%f", &valor);
   getchar();
-  printf("%f", valorAluguel);
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -468,6 +472,7 @@ void telaCadastrarFantasia(void) {
 }
 
 void telaPesquisarFantasia(void) {
+    char id[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -486,7 +491,9 @@ void telaPesquisarFantasia(void) {
 	printf("///           = = = = = = = = Pesquisar Fantasia = = = = = = = =          ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           ID:                                                         ///\n");
+	printf("///           ID: ");
+  scanf("%[0-9]", id);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -496,6 +503,8 @@ void telaPesquisarFantasia(void) {
 }
 
 void telaAtualizarFantasia(void) {
+    char id[11];
+    char item[5];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -514,8 +523,12 @@ void telaAtualizarFantasia(void) {
 	printf("///           = = = = = = = = Atualizar Fantasia = = = = = = = =          ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Digite o ID da fantasia:                                    ///\n");
-	printf("///           Digite o item a ser atualizado:                             ///\n");
+	printf("///           Digite o ID da fantasia: ");
+  scanf("%[0-9]", id);
+  getchar();
+	printf("///           Digite o item a ser atualizado: ");
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", item);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -524,6 +537,7 @@ void telaAtualizarFantasia(void) {
 }
 
 void telaExcluirFantasia(void) {
+    char id[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -542,7 +556,9 @@ void telaExcluirFantasia(void) {
 	printf("///           = = = = = = = = Excluir Fantasia = = = = = = = =            ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           ID:                                                         ///\n");
+	printf("///           ID: ");
+  scanf("%[0-9]", id);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -552,6 +568,9 @@ void telaExcluirFantasia(void) {
 }
 
 void telaAlugarFantasia(void) {
+  char cpf[11];
+  char id[11];
+  char confirmacao[1];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -570,9 +589,15 @@ void telaAlugarFantasia(void) {
 	printf("///           = = = = = = = = Alugar Fantasia = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
   printf("///                                                                       ///\n");
-	printf("///           Digite o seu CPF:                                           ///\n");
-	printf("///           Digite o ID da Fantasia:                                    ///\n");
-	printf("///           Confirma aluguel (s/n)?                                     ///\n");
+	printf("///           Digite o seu CPF: ");
+  scanf("%[0-9]", cpf);
+  getchar();
+	printf("///           Digite o ID da Fantasia: ");
+  scanf("%[0-9]", id);
+  getchar();
+	printf("///           Confirma o aluguel (s/n)? ");
+  scanf("%[SNsn]", confirmacao);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -581,6 +606,7 @@ void telaAlugarFantasia(void) {
 }
 
 void telaDevolverFantasia(void) {
+  char cpf[11];
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -599,7 +625,9 @@ void telaDevolverFantasia(void) {
 	printf("///           = = = = = = = = Devolver Fantasia = = = = = = = =           ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Digite o seu CPF:                                           ///\n");
+	printf("///           Digite o seu CPF: ");
+  scanf("%[0-9]", cpf);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
