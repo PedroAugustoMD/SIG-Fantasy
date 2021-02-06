@@ -142,7 +142,7 @@ void menuSobre(void) {
 
 char menuCliente(void) {
   char op;
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -173,7 +173,7 @@ char menuCliente(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return op;
 
@@ -181,7 +181,7 @@ char menuCliente(void) {
 
 char menuFantasia(void) {
   char op;
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -212,7 +212,7 @@ char menuFantasia(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return op;
 
@@ -220,7 +220,7 @@ char menuFantasia(void) {
 
 char menuAlugueis(void) {
   char op;
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -250,14 +250,14 @@ char menuAlugueis(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return op;
 }
 
 char menuRelatorios(void) {
   char op;
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -288,7 +288,7 @@ char menuRelatorios(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return op;
 }
@@ -298,7 +298,7 @@ void telaCadastrarCliente(void) {
 	char nome[52];
 	char email[52];
 	char telefone[13];
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -337,8 +337,8 @@ void telaCadastrarCliente(void) {
 }
 
 void telaPesquisarCliente(void) {
-    char cpf[12];
-    system("clear");
+  char cpf[12];
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
