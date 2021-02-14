@@ -848,7 +848,19 @@ void moduloFantasia(void) {
 }
 
 void moduloAlugueis(void) {
-	menuAlugueis();
+	char opcao;
+  do {
+		opcao = menuAlugueis();
+		switch(opcao) {
+			case '1': 	telaAlugarFantasia();
+						break;
+			case '2': 	telaDevolverFantasia();
+						break;
+			case '3': 	telaListarFantasia();
+						break;
+		} 		
+	} while (opcao != '0');
+	  menuPrincipal();
 
 }
 
