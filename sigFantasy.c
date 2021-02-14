@@ -861,16 +861,26 @@ void moduloAlugueis(void) {
 		} 		
 	} while (opcao != '0');
 	  menuPrincipal();
-
 }
 
 void moduloRelatorio(void) {
-	menuRelatorios();
-
+	char opcao;
+  do {
+		opcao = menuRelatorios();
+		switch(opcao) {
+			case '1': 	telaHistoricoFantasia();
+						break;
+			case '2': 	telaVerificarDatas();
+						break;
+			case '3': 	telaClienteFiel();
+						break;
+			case '4': 	telaFantasiaMaisAlugada();
+						break;
+		} 		
+	} while (opcao != '0');
+	  menuPrincipal();
 }
 
 void moduloInformacoes(void) {
-	// modulo em desenvolvimento
 	menuSobre();
-
 }
