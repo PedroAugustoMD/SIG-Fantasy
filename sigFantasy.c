@@ -830,7 +830,21 @@ void moduloCliente(void) {
 
 
 void moduloFantasia(void) {
-	menuFantasia();
+	char opcao;
+  do {
+		opcao = menuFantasia();
+		switch(opcao) {
+			case '1': 	telaCadastrarFantasia();
+						break;
+			case '2': 	telaPesquisarFantasia();
+						break;
+			case '3': 	telaAtualizarFantasia();
+						break;
+			case '4': 	telaExcluirFantasia();
+						break;
+		} 		
+	} while (opcao != '0');
+	  menuPrincipal();
 }
 
 void moduloAlugueis(void) {
