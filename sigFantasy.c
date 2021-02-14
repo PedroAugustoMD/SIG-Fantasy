@@ -11,23 +11,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menuSobre(void);
 char menuPrincipal(void);
+
+void moduloInformacoes(void);
+void menuSobre(void);
+
+void moduloCliente(void);
 char menuCliente(void);
-char menuFantasia(void);
-char menuAlugueis(void);
-char menuRelatorios(void);
 void telaCadastrarCliente(void);
 void telaPesquisarCliente(void);
 void telaAtualizarCliente(void);
 void telaExcluirCliente(void);
+
+void moduloFantasia(void);
+char menuFantasia(void);
 void telaCadastrarFantasia(void);
 void telaPesquisarFantasia(void);
 void telaAtualizarFantasia(void);
 void telaExcluirFantasia(void);
+
+void moduloAlugueis(void);
+char menuAlugueis(void);
 void telaAlugarFantasia(void);
 void telaDevolverFantasia(void);
 void telaListarFantasia(void);
+
+void moduloRelatorio(void);
+char menuRelatorios(void);
 void telaHistoricoFantasia(void);
 void telaVerificarDatas(void);
 void telaClienteFiel(void);
@@ -36,28 +46,45 @@ void telaFantasiaMaisAlugada(void);
 
 int main(void) {
     char opcao;
-    menuSobre();
-    opcao = menuPrincipal();
-    opcao = menuCliente();
-    opcao = menuFantasia();
-    opcao = menuAlugueis();
-    opcao = menuRelatorios();
-    telaCadastrarCliente();
-    telaPesquisarCliente();
-    telaAtualizarCliente();
-    telaExcluirCliente();   
-    telaCadastrarFantasia();
-    telaPesquisarFantasia();
-    telaAtualizarFantasia();
-    telaExcluirFantasia();
-    telaAlugarFantasia();
-    telaDevolverFantasia();
-    telaListarFantasia();
-    telaHistoricoFantasia();
-    telaVerificarDatas();
-    telaClienteFiel();
-    telaFantasiaMaisAlugada(); 
-    return 0;
+    do {
+      opcao = menuPrincipal();
+		  switch(opcao) {
+			  case '1': 	moduloCliente();
+						break;
+			  case '2': 	moduloFantasia();
+						break;
+			  case '3': 	moduloAlugueis();
+						break;
+			  case '4': 	moduloRelatorio();
+						break;
+			  case '5': 	moduloInformacoes();
+						break;
+		} 		
+	} while (opcao != '0');
+	return 0;
+    
+    
+    //menuSobre();
+    //opcao = menuPrincipal();
+    //opcao = menuCliente();
+    //opcao = menuFantasia();
+    //opcao = menuAlugueis();
+    //opcao = menuRelatorios();
+    //telaCadastrarCliente();
+    //telaPesquisarCliente();
+    //telaAtualizarCliente();
+    //telaExcluirCliente();   
+    //telaCadastrarFantasia();
+    //telaPesquisarFantasia();
+    //telaAtualizarFantasia();
+    //telaExcluirFantasia();
+    //telaAlugarFantasia();
+    //telaDevolverFantasia();
+    //telaListarFantasia();
+    //telaHistoricoFantasia();
+    //telaVerificarDatas();
+    //telaClienteFiel();
+    //telaFantasiaMaisAlugada(); 
 
 }
 
@@ -780,4 +807,29 @@ void telaFantasiaMaisAlugada(void) {
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+}
+
+void moduloCliente(void) {
+	menuCliente();
+
+}
+
+void moduloFantasia(void) {
+	menuFantasia();
+}
+
+void moduloAlugueis(void) {
+	menuAlugueis();
+
+}
+
+void moduloRelatorio(void) {
+	menuRelatorios();
+
+}
+
+void moduloInformacoes(void) {
+	// modulo em desenvolvimento
+	menuSobre();
+
 }
