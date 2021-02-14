@@ -810,9 +810,24 @@ void telaFantasiaMaisAlugada(void) {
 }
 
 void moduloCliente(void) {
-	menuCliente();
-
+  char opcao;
+  do {
+		opcao = menuCliente();
+		switch(opcao) {
+			case '1': 	telaCadastrarCliente();
+						break;
+			case '2': 	telaPesquisarCliente();
+						break;
+			case '3': 	telaAtualizarCliente();
+						break;
+			case '4': 	telaExcluirCliente();
+						break;
+		} 		
+	} while (opcao != '0');
+	  menuPrincipal();
 }
+
+
 
 void moduloFantasia(void) {
 	menuFantasia();
