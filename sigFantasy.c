@@ -824,7 +824,7 @@ void moduloCliente(void) {
 						break;
 		} 		
 	} while (opcao != '0');
-	  menuPrincipal();
+
 }
 
 
@@ -844,7 +844,7 @@ void moduloFantasia(void) {
 						break;
 		} 		
 	} while (opcao != '0');
-	  menuPrincipal();
+
 }
 
 void moduloAlugueis(void) {
@@ -860,7 +860,7 @@ void moduloAlugueis(void) {
 						break;
 		} 		
 	} while (opcao != '0');
-	  menuPrincipal();
+
 }
 
 void moduloRelatorio(void) {
@@ -878,7 +878,7 @@ void moduloRelatorio(void) {
 						break;
 		} 		
 	} while (opcao != '0');
-	  menuPrincipal();
+
 }
 
 void moduloInformacoes(void) {
