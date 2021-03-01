@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 char menuAlugueis(void) {
   char op;
   system("clear");

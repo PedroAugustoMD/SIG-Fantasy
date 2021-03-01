@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 char menuCliente(void) {
   char op;
   system("clear");
