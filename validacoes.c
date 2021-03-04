@@ -1,5 +1,7 @@
-// Referência: Flavius Gorgônio
 
+#include <string.h>
+
+// Validação do CPF - Adaptado de Flavius Gorgônio
 int validaCPF(char cpf[]) {
   int soma;
   int d1;
@@ -32,4 +34,42 @@ int validaCPF(char cpf[]) {
     return 0;
   }
   return 1;
+}
+
+// Validar EMAIL
+
+int validaEmail(char email[]) {
+  int tam = strlen(email);
+  int arrobas;
+  int pontos;
+  int posicaoArroba;
+  int posicaoPonto;
+  for(int i = 0; i < tam; i++){
+    if (email[i] == '@'){
+      arrobas+=1;
+      posicaoArroba = i;
+      if (email[i+1] == '.'){
+        return 0;
+      }
+    }
+  }
+  if(arrobas != 1){
+    return 0;
+  }
+  for (int i = 0; i < tam; i++){
+    if(email[i] == '.'){
+      pontos += 1;
+      posicaoPonto = i;
+      if (email[i+1] == '.'){
+        return 0;
+      }
+    }
+  
+  }
+  if (pontos == 0 || posicaoPonto <= posicaoArroba){
+    return 0;
+  }
+
+  return 1;
+
 }

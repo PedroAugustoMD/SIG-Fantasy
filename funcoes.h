@@ -3,6 +3,9 @@ char menuPrincipal(void);
 void moduloInformacoes(void);
 void menuSobre(void);
 
+int validaCPF(char[]);
+
+
 void moduloCliente(void);
 char menuCliente(void);
 void telaCadastrarCliente(void);
