@@ -1,5 +1,6 @@
 
 #include <string.h>
+#include <ctype.h>
 
 // Validação do CPF - Adaptado de Flavius Gorgônio
 int validaCPF(char cpf[]) {
@@ -37,7 +38,6 @@ int validaCPF(char cpf[]) {
 }
 
 // Validar EMAIL
-
 int validaEmail(char email[]) {
   int tam = strlen(email);
   int arrobas;
@@ -72,4 +72,18 @@ int validaEmail(char email[]) {
 
   return 1;
 
+}
+
+// Validar NOME
+int validarNome(char nome[]){
+int tam = strlen(nome);
+for(int i=0; i< tam; i++){
+  if(!isalpha(nome[i])){
+    if(!isblank(nome[i])){
+    return 0;
+    }
+  }
+  }
+
+  return 1;
 }
