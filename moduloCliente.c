@@ -44,7 +44,7 @@ void telaCadastrarCliente(void) {
   char cpf[12];
 	char nome[52];
 	char email[52];
-	char telefone[13];
+	char telefone[12];
   system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");

@@ -1,8 +1,7 @@
-
 #include <string.h>
 #include <ctype.h>
 
-// Validação do CPF - Referência: Flavius Gorgônio
+// Validar CPF - Referência: Flavius Gorgônio
 int validaCPF(char cpf[]) {
   int soma;
   int d1;
@@ -111,4 +110,22 @@ if (tam == 0) {
   }
   }
   return 1;
+}
+
+// Validar TELEFONE
+
+int validarTelefone(char telefone[]){
+int tam = strlen(telefone);
+if (tam != 11) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (telefone[i] >= '0' && telefone[i] <= '9') {
+      continue;
+    } else {
+        return 0;
+      
+  }
+}
+return 1;
 }
