@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-// Validação do CPF - Adaptado de Flavius Gorgônio
+// Validação do CPF - Referência: Flavius Gorgônio
 int validaCPF(char cpf[]) {
   int soma;
   int d1;
@@ -74,16 +74,41 @@ int validaEmail(char email[]) {
 
 }
 
-// Validar NOME
+// Validar NOME - Adaptado de Flavius Gorgônio
 int validarNome(char nome[]){
 int tam = strlen(nome);
-for(int i=0; i< tam; i++){
-  if(!isalpha(nome[i])){
-    if(!isblank(nome[i])){
+char acentos[] ="ÁÉÍÓÚÂÊÔÇÀÃÕáéíóúâêôçàãõ";
+int tamAcentos = strlen(acentos);
+int cont = 0;
+if (tam == 0) {
     return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (nome[i] >= 'A' && nome[i] <= 'Z') {
+      continue;
+    } else if (nome[i] >= 'a' && nome[i] <= 'z') {
+      continue;
+    } else if (nome[i] == ' ') {
+      continue;
+    } else {
+      if (nome[i] >= '0' && nome[i] <= '9'){
+        return 0;
+      }else{
+      for(int l = 0; l < tamAcentos;l++){
+        if(nome[i] == acentos[l]){
+          cont += 1;
+          break;
+        }else{
+          cont +=0;
+        }
+      }
+      if (cont == 0){
+        return 0;
+      }else if(cont >= 1){
+        continue;
+      }
     }
   }
   }
-
   return 1;
 }
