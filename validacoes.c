@@ -150,3 +150,12 @@ if (tam > 11) {
 }
 return 1;
 }
+
+
+//VALIDAR VAlOR
+int validaVALOR(float valor){
+if (valor < 1.0) {
+    return 0;
+  }
+return 1;
+}

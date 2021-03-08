@@ -7,6 +7,8 @@ int validaCPF(char[]);
 int validaEmail(char[]);
 int validarNome(char[]);
 int validarTelefone(char[]);
+int validaID(char[]);
+int validaValor(float);
 
 void moduloCliente(void);
 char menuCliente(void);
