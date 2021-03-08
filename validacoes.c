@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 #include <ctype.h>
 
 // Validar CPF - Referência: Flavius Gorgônio
@@ -6,6 +7,10 @@ int validaCPF(char cpf[]) {
   int soma;
   int d1;
   int d2;
+  int tam = strlen(cpf);
+  if (tam != 11) {
+    return 0;
+  }
   for(int i = 0; i<11;i++){
     if ((cpf[i] - '0') < 0 || (cpf[i] - '0') > 9){
     return 0;
@@ -47,7 +52,7 @@ int validaEmail(char email[]) {
     if (email[i] == '@'){
       arrobas+=1;
       posicaoArroba = i;
-      if (email[i+1] == '.'){
+      if (!(email[i+1] >= 'a' && email[i+1] <= 'z')){
         return 0;
       }
     }
@@ -70,7 +75,6 @@ int validaEmail(char email[]) {
   }
 
   return 1;
-
 }
 
 // Validar NOME - Adaptado de Flavius Gorgônio
@@ -114,13 +118,30 @@ if (tam == 0) {
 
 // Validar TELEFONE
 
-int validarTelefone(char telefone[]){
+int validaTelefone(char telefone[]){
 int tam = strlen(telefone);
 if (tam != 11) {
     return 0;
   }
   for (int i = 0; i < tam; i++) {
     if (telefone[i] >= '0' && telefone[i] <= '9') {
+      continue;
+    } else {
+        return 0;
+      
+  }
+}
+return 1;
+}
+
+//VALIDAR ID
+int validaID(char id[]){
+int tam = strlen(id);
+if (tam > 11) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (id[i] >= '0' && id[i] <= '9') {
       continue;
     } else {
         return 0;
