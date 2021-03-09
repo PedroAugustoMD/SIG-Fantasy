@@ -9,6 +9,9 @@ int validarNome(char[]);
 int validarTelefone(char[]);
 int validaID(char[]);
 int validaValor(float);
+int bissexto(int);
+int testaData(int, int, int);
+
 
 void moduloCliente(void);
 char menuCliente(void);
