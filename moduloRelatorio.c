@@ -69,8 +69,9 @@ void telaHistoricoFantasia(void) {
 }
 
 void telaVerificarDatas(void) {
-  char escolha[2];
-  char data[11];
+  int dia;
+  int mes;
+  int ano;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -89,12 +90,15 @@ void telaVerificarDatas(void) {
 	printf("///           = = = = = = = = Verificar Datas = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Digite D(dia), M(mês) ou A(ano): ");
-  scanf("%[DMAdma]", escolha);
+	printf("///           Digite o dia: ");
+  scanf("%i", &dia);
   getchar();
-	printf("///           Digite a data a ser analisada: ");
-  scanf("%[0-9/]", data);
-	getchar();
+	printf("///           Digite o mês: ");
+  scanf("%i", &mes);
+  getchar();
+  printf("///           Digite o ano: ");
+  scanf("%i", &ano);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");

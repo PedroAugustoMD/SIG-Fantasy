@@ -11,6 +11,7 @@ int validaID(char[]);
 int validaValor(float);
 int bissexto(int);
 int testaData(int, int, int);
+int validaConfirmacao(char[]);
 
 
 void moduloCliente(void);
