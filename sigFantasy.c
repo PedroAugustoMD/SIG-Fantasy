@@ -10,7 +10,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcoes.h"
+#include "menuPrincipal.h"
+#include "moduloInformacoes.h"
+#include "moduloCliente.h"
+#include "moduloFantasia.h"
+#include "moduloAlugueis.h"
+#include "moduloRelatorio.h"
+#include "validacoes.h"
+
 
 int main(void) {
     char opcao;

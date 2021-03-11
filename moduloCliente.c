@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "moduloCliente.h"
+#include "validacoes.h"
 
 char menuCliente(void) {
   char op;
@@ -64,17 +67,37 @@ void telaCadastrarCliente(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           CPF (Apenas números!): ");
-  scanf("%[0-9]", cpf);
+  scanf("%[^\n]", cpf);
   getchar();
+   do {
+	    printf("///           CPF (Apenas números!): ");
+        scanf("%[^\n]", cpf);
+	    getchar();
+    } while (!validaCPF(cpf));
 	printf("///           Nome: ");
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+  scanf("%[^\n]", nome);
   getchar();
+  do {
+	    printf("///           Nome: ");
+        scanf("%[^\n]", nome);
+	    getchar();
+    } while (!validarNome(nome));
 	printf("///           E-mail: ");
-  scanf("%[a-z@.]", email);
+  scanf("%[^\n]", email);
   getchar();
+  do {
+	    printf("///           E-mail: ");
+        scanf("%[^\n]", email);
+	    getchar();
+    } while (!validaEmail(nome));
 	printf("///           Telefone (Apenas números!): ");
-  scanf("%[0-9]", telefone);
+  scanf("%[^\n]", telefone);
   getchar();
+  do {
+	    printf("///           Telefone (Apenas números!): ");
+        scanf("%[^\n]", telefone);
+	    getchar();
+    } while (!validarTelefone(telefone));
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");

@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "moduloFantasia.h"
+#include "validacoes.h"
+
 
 char menuFantasia(void) {
   char op;
@@ -62,14 +66,29 @@ void telaCadastrarFantasia(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           ID (Apenas números!): ");
-  scanf("%[0-9]", id);
+  scanf("%[^\n]", id);
   getchar();
+  do {
+	    printf("///           ID (Apenas números!): ");
+        scanf("%[^\n]", id);
+	    getchar();
+    } while (!validaID(id));
 	printf("///           Nome da fantasia: ");
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+  scanf("%[^\n]", nome);
   getchar();
+    do {
+	    printf("///           Nome da fantasia: ");
+        scanf("%[^\n]", nome);
+	    getchar();
+    } while (!validarNome(nome));
 	printf("///           Valor do aluguel: ");
   scanf("%f", &valor);
   getchar();
+    do {
+	    printf("///           Valor do aluguel: ");
+        scanf("%f", &valor);
+	    getchar();
+    } while (!validaValor(valor));
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");

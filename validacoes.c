@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
+
 
 // Validar CPF - Referência: Flavius Gorgônio
 int validaCPF(char cpf[]) {

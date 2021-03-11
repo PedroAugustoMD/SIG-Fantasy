@@ -61,14 +61,15 @@ void telaAlugarFantasia(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
   printf("///                                                                       ///\n");
 	printf("///           Digite o seu CPF: ");
-  scanf("%[0-9]", cpf);
+  scanf("%[^\n]", cpf);
   getchar();
 	printf("///           Digite o ID da Fantasia: ");
-  scanf("%[0-9]", id);
+  scanf("%[^\n]", id);
   getchar();
 	printf("///           Confirma o aluguel (s/n)? ");
-  scanf("%[SNsn]", confirmacao);
+  scanf("%[^\n]", confirmacao);
   getchar();
+  
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
