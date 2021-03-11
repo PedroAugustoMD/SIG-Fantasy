@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "moduloRelatorio.h"
+#include "validacoes.h"
+
 
 char menuRelatorios(void) {
   char op;
@@ -99,6 +103,17 @@ void telaVerificarDatas(void) {
   printf("///           Digite o ano: ");
   scanf("%i", &ano);
   getchar();
+  do {
+	    printf("///           Digite o dia: ");
+      scanf("%i", &dia);
+      getchar();
+	    printf("///           Digite o mês: ");
+      scanf("%i", &mes);
+      getchar();
+      printf("///           Digite o ano: ");
+      scanf("%i", &ano);
+      getchar();
+    } while (!validaData(dia,mes,ano));
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");

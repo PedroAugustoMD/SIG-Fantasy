@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "menuPrincipal.h"
+#include "validacoes.h"
 
 char menuPrincipal(void) {
     char op;

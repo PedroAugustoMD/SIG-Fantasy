@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "moduloInformacoes.h"
+#include "validacoes.h"
 
 void menuSobre(void) {
     printf("\n");

@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "moduloAlugueis.h"
+#include "validacoes.h"
 
 char menuAlugueis(void) {
   char op;
@@ -69,7 +72,11 @@ void telaAlugarFantasia(void) {
 	printf("///           Confirma o aluguel (s/n)? ");
   scanf("%[^\n]", confirmacao);
   getchar();
-  
+    do {
+	    printf("///           Confirma o aluguel (s/n: ");
+        scanf("%[^\n]", id);
+	    getchar();
+    } while (!validaID(id));
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
