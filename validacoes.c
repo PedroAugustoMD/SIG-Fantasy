@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include "validacoes.h"
 
 
 // Validar CPF - Referência: Flavius Gorgônio

@@ -46,7 +46,7 @@ char menuCliente(void) {
 void telaCadastrarCliente(void) {
   char cpf[12];
 	char nome[52];
-	char email[52];
+	char email[30];
 	char telefone[12];
   system("clear");
 	printf("\n");
@@ -69,35 +69,36 @@ void telaCadastrarCliente(void) {
 	printf("///           CPF (Apenas números!): ");
   scanf("%[^\n]", cpf);
   getchar();
-   do {
-	    printf("///           CPF (Apenas números!): ");
+  
+   while (validaCPF(cpf) == 0){
+      printf("///           CPF inválido!: ");
         scanf("%[^\n]", cpf);
 	    getchar();
-    } while (!validaCPF(cpf));
+   }
 	printf("///           Nome: ");
   scanf("%[^\n]", nome);
   getchar();
-  do {
-	    printf("///           Nome: ");
+  while (validarNome(nome) == 0){
+      printf("///           Nome inválido!: ");
         scanf("%[^\n]", nome);
 	    getchar();
-    } while (!validarNome(nome));
+   }
 	printf("///           E-mail: ");
   scanf("%[^\n]", email);
   getchar();
-  do {
-	    printf("///           E-mail: ");
-        scanf("%[^\n]", email);
+  while (validaEmail(email) == 0){
+      printf("///           Email inválido!: ");
+      scanf("%[^\n]", email);
 	    getchar();
-    } while (!validaEmail(nome));
+   }
 	printf("///           Telefone (Apenas números!): ");
   scanf("%[^\n]", telefone);
   getchar();
-  do {
-	    printf("///           Telefone (Apenas números!): ");
+  while (validaTelefone(telefone) == 0){
+      printf("///           Telefone inválido!: ");
         scanf("%[^\n]", telefone);
 	    getchar();
-    } while (!validarTelefone(telefone));
+   }
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");

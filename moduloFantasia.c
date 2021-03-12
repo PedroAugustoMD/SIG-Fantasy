@@ -68,27 +68,27 @@ void telaCadastrarFantasia(void) {
 	printf("///           ID (Apenas números!): ");
   scanf("%[^\n]", id);
   getchar();
-  do {
-	    printf("///           ID (Apenas números!): ");
+while (validaID(id) == 0){
+      printf("///           ID inválido!: ");
         scanf("%[^\n]", id);
 	    getchar();
-    } while (!validaID(id));
+   }
 	printf("///           Nome da fantasia: ");
   scanf("%[^\n]", nome);
   getchar();
-    do {
-	    printf("///           Nome da fantasia: ");
+    while (validarNome(nome) == 0){
+      printf("///           Nome inválido!: ");
         scanf("%[^\n]", nome);
 	    getchar();
-    } while (!validarNome(nome));
+   }
 	printf("///           Valor do aluguel: ");
   scanf("%f", &valor);
   getchar();
-    do {
-	    printf("///           Valor do aluguel: ");
+  while (validaVALOR(valor) == 0){
+      printf("///           Valor inválido!: ");
         scanf("%f", &valor);
 	    getchar();
-    } while (!validaValor(valor));
+   }
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
