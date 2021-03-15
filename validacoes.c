@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
 #include "validacoes.h"
@@ -45,20 +47,22 @@ int validaCPF(char cpf[]) {
 // Validar EMAIL
 int validaEmail(char email[]) {
   int tam = strlen(email);
-  int arrobas;
-  int pontos;
-  int posicaoArroba;
-  int posicaoPonto;
+  int arrobas = 0;
+  int pontos = 0;
+  int posicaoArroba = 0;
+  int posicaoPonto = 0;
   for(int i = 0; i < tam; i++){
     if (email[i] == '@'){
       arrobas+=1;
       posicaoArroba = i;
       if (!(email[i+1] >= 'a' && email[i+1] <= 'z')){
+        printf("Erro no primeiro retorno");
         return 0;
       }
     }
   }
   if(arrobas != 1){
+    printf("Erro no segundo retorno");
     return 0;
   }
   for (int i = 0; i < tam; i++){
@@ -66,12 +70,14 @@ int validaEmail(char email[]) {
       pontos += 1;
       posicaoPonto = i;
       if (email[i+1] == '.'){
+        printf("Erro no terceiro retorno");
         return 0;
       }
     }
   
   }
   if (pontos == 0 || posicaoPonto <= posicaoArroba){
+    printf("Erro no quarto retorno");
     return 0;
   }
 

@@ -72,11 +72,11 @@ void telaAlugarFantasia(void) {
 	printf("///           Confirma o aluguel (s/n)? ");
   scanf("%[^\n]", confirmacao);
   getchar();
-    do {
-	    printf("///           Confirma o aluguel (s/n: ");
-        scanf("%[^\n]", id);
+    while (validaConfirmacao(confirmacao) == 0){
+      printf("///           Ação inválida!: ");
+        scanf("%[^\n]", confirmacao);
 	    getchar();
-    } while (!validaID(id));
+   }
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");

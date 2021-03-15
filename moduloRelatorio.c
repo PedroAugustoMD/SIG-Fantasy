@@ -103,8 +103,9 @@ void telaVerificarDatas(void) {
   printf("///           Digite o ano: ");
   scanf("%i", &ano);
   getchar();
-  do {
-	    printf("///           Digite o dia: ");
+ while (validaData(dia, mes, ano) == 0){
+      printf("///           Data inválida!: ");
+      printf("///           Digite o dia: ");
       scanf("%i", &dia);
       getchar();
 	    printf("///           Digite o mês: ");
@@ -113,7 +114,7 @@ void telaVerificarDatas(void) {
       printf("///           Digite o ano: ");
       scanf("%i", &ano);
       getchar();
-    } while (!validaData(dia,mes,ano));
+   }
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
