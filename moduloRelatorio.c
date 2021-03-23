@@ -45,6 +45,8 @@ char menuRelatorios(void) {
 
 
 void telaHistoricoFantasia(void) {
+  char cpf[12] = "13942404494";
+  char id[12] = "01";
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -64,7 +66,13 @@ void telaHistoricoFantasia(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Histórico de empréstimos:                                   ///\n");
-	printf("///                                                                       ///\n");
+  for(int i = 0; i<20;i++){
+	printf("/// -------------------------                                       ///\n");
+  printf("/// CPF: %s                                       ///\n",cpf);
+  printf("/// ID: %s                                       ///\n",id);
+	printf("/// -------------------------                                       ///\n");
+ 
+  }
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -115,7 +123,7 @@ void telaVerificarDatas(void) {
       scanf("%i", &ano);
       getchar();
    }
-	printf("///                                                                       ///\n");
+	printf("///                                                              ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
