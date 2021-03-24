@@ -67,10 +67,10 @@ void telaHistoricoFantasia(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Histórico de empréstimos:                                   ///\n");
   for(int i = 0; i<20;i++){
-	printf("/// -------------------------                                       ///\n");
-  printf("/// CPF: %s                                       ///\n",cpf);
-  printf("/// ID: %s                                       ///\n",id);
-	printf("/// -------------------------                                       ///\n");
+	printf("/// -------------------------                                            ///\n");
+  printf("/// CPF: %s                                                              ///\n",cpf);
+  printf("/// ID: %s                                                               ///\n",id);
+	printf("/// -------------------------                                            ///\n");
  
   }
 	printf("///                                                                       ///\n");
@@ -84,6 +84,7 @@ void telaVerificarDatas(void) {
   int dia;
   int mes;
   int ano;
+  float valor = 100.0;
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -123,7 +124,7 @@ void telaVerificarDatas(void) {
       scanf("%i", &ano);
       getchar();
    }
-	printf("///                                                              ///\n");
+	printf("///  O dia %d/%d/%d rendeu R$%.2f                                           ///\n",dia,mes,ano,valor);
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
