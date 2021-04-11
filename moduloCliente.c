@@ -4,6 +4,14 @@
 #include "moduloCliente.h"
 #include "validacoes.h"
 
+struct cliente {
+   char cpfCliente[12];
+   char nomeCliente[51];
+   char email[51];
+   char fone[15];
+   int quantidadeAlugueis;
+};
+
 char menuCliente(void) {
   char op;
   system("clear");
