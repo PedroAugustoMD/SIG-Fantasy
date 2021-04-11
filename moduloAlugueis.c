@@ -4,6 +4,15 @@
 #include "moduloAlugueis.h"
 #include "validacoes.h"
 
+struct aluguel {
+   char cpfCliente[12];
+   char idFantasia[12];
+   char data[11];
+   char hora[11];
+   float valorPago;
+   char status;
+};
+
 char menuAlugueis(void) {
   char op;
   system("clear");
