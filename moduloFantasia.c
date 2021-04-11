@@ -4,6 +4,13 @@
 #include "moduloFantasia.h"
 #include "validacoes.h"
 
+struct fantasia {
+   char idFantasia[12];
+   char nomeFantasia[51];
+   float valor;
+   char status;
+   int quantidadeAlugueis;
+};
 
 char menuFantasia(void) {
   char op;
