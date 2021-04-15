@@ -4,13 +4,23 @@
 #include "moduloCliente.h"
 #include "validacoes.h"
 
-struct cliente {
-   char cpfCliente[12];
-   char nomeCliente[51];
-   char email[51];
-   char fone[15];
-   int quantidadeAlugueis;
-};
+typedef struct cliente Cliente;
+
+void cadastrarCliente(void) {
+  Cliente *clt;
+	// função ainda em desenvolvimento
+	
+  // ler os dados do aluno com a função telaCadastrarAluno()
+  clt = telaCadastrarCliente();
+
+  // gravar o registro no arquivo de alunos
+  gravarCliente(clt);
+
+  // liberar o espaço de memória da estrutura 
+  free(clt);
+}
+
+
 
 char menuCliente(void) {
   char op;
@@ -51,11 +61,8 @@ char menuCliente(void) {
 
 }
 
-void telaCadastrarCliente(void) {
-  char cpf[12];
-	char nome[52];
-	char email[30];
-	char telefone[12];
+Cliente* telaCadastrarCliente(void) {
+  Cliente *clt;
   system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -74,45 +81,61 @@ void telaCadastrarCliente(void) {
 	printf("///           = = = = = = = = Cadastrar Cliente = = = = = = = =           ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
+  clt = (Cliente*) malloc(sizeof(Cliente));
 	printf("///           CPF (Apenas números!): ");
-  scanf("%[^\n]", cpf);
+  scanf("%[^\n]", clt->cpfCliente);
   getchar();
   
-   while (validaCPF(cpf) == 0){
+   while (validaCPF(clt->cpfCliente) == 0){
       printf("///           CPF inválido!: ");
-        scanf("%[^\n]", cpf);
+        scanf("%[^\n]", clt->cpfCliente);
 	    getchar();
    }
 	printf("///           Nome: ");
-  scanf("%[^\n]", nome);
+  scanf("%[^\n]", clt->nomeCliente);
   getchar();
-  while (validarNome(nome) == 0){
+  while (validarNome(clt->nomeCliente) == 0){
       printf("///           Nome inválido!: ");
-        scanf("%[^\n]", nome);
+        scanf("%[^\n]", clt->nomeCliente);
 	    getchar();
    }
 	printf("///           E-mail: ");
-  scanf("%[^\n]", email);
+  scanf("%[^\n]", clt->email);
   getchar();
-  while (validaEmail(email) == 0){
+  while (validaEmail(clt->email) == 0){
       printf("///           Email inválido!: ");
-      scanf("%[^\n]", email);
+      scanf("%[^\n]", clt->email);
 	    getchar();
    }
 	printf("///           Telefone (Apenas números!): ");
-  scanf("%[^\n]", telefone);
+  scanf("%[^\n]", clt->fone);
   getchar();
-  while (validaTelefone(telefone) == 0){
+  while (validaTelefone(clt->fone) == 0){
       printf("///           Telefone inválido!: ");
-        scanf("%[^\n]", telefone);
+        scanf("%[^\n]", clt->fone);
 	    getchar();
    }
+   clt->status = 'C';
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return clt;
+}
+
+void gravarCliente(Cliente* clt) {
+  FILE* fp;
+
+  fp = fopen("clientes.dat", "ab");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(clt, sizeof(Cliente), 1, fp);
+  fclose(fp);
 }
 
 void telaPesquisarCliente(void) {
@@ -216,7 +239,7 @@ void moduloCliente(void) {
   do {
 		opcao = menuCliente();
 		switch(opcao) {
-			case '1': 	telaCadastrarCliente();
+			case '1': 	cadastrarCliente();
 						break;
 			case '2': 	telaPesquisarCliente();
 						break;
