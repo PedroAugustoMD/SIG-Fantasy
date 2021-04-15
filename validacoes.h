@@ -7,3 +7,5 @@ int validaVALOR(float);
 int bissexto(int);
 int validaData(int, int, int);
 int validaConfirmacao(char[]);
+void delay(int);
+void limpaTela(void);

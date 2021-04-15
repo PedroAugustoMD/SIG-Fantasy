@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "validacoes.h"
+#include <time.h>
 
 
 // Validar CPF - Referência: Flavius Gorgônio
@@ -209,4 +210,20 @@ if (confirmacao[0] == 'S' || confirmacao[0] == 's'){
 else{
   return 0;
 }
+}
+
+//delay - Referência: Flavius Gorgônio
+void delay(int segundos) {
+  int tempo = 1000 * segundos;
+  clock_t inicio = clock();
+  while (clock() < inicio + tempo) {
+    // não faz nada, apenas gasta tempo
+  }
+}
+
+//limpa Tela - Referência: Flavius Gorgônio
+void limpaTela(void) {
+  if (system("clear") || system("cls")) {
+
+  }
 }

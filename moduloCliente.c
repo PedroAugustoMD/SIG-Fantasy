@@ -8,18 +8,26 @@ typedef struct cliente Cliente;
 
 void cadastrarCliente(void) {
   Cliente *clt;
-	// função ainda em desenvolvimento
-	
-  // ler os dados do aluno com a função telaCadastrarAluno()
   clt = telaCadastrarCliente();
-
-  // gravar o registro no arquivo de alunos
   gravarCliente(clt);
-
-  // liberar o espaço de memória da estrutura 
   free(clt);
 }
 
+void pesquisarCliente(void) {
+  Cliente *clt;
+  char* cpf;
+	// função ainda em desenvolvimento
+
+	cpf = telaPesquisarCliente();
+
+  // pesquisa o aluno no arquivo
+  clt = buscarCliente(cpf);
+
+  // exibe o aluno pesquisado
+  exibirCliente(clt);
+
+  free(clt); 
+}
 
 
 char menuCliente(void) {
@@ -138,8 +146,10 @@ void gravarCliente(Cliente* clt) {
   fclose(fp);
 }
 
-void telaPesquisarCliente(void) {
-  char cpf[12];
+char* telaPesquisarCliente(void) {
+  char* cpf;
+  cpf = (char*) malloc(12*sizeof(char));
+  limpaTela();
   system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -165,8 +175,45 @@ void telaPesquisarCliente(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
+  delay(1);
+  return cpf;
+}
+
+Cliente* buscarCliente(char* cpf) {
+  FILE* fp;
+  Cliente* clt;
+
+  clt = (Cliente*) malloc(sizeof(Cliente));
+  fp = fopen("clientes.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(!feof(fp)) {
+    fread(clt, sizeof(Cliente), 1, fp);
+    if (strcmp(clt->cpfCliente, cpf) == 0) {
+      fclose(fp);
+      return clt;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+void exibirCliente(Cliente* clt) {
+
+  if (clt == NULL) {
+    printf("\n= = = Cliente Inexistente = = =\n");
+  } else {
+    printf("\n= = = Cliente Cadastrado = = =\n");
+    printf("CPF: %s\n", clt->cpfCliente);
+    printf("Nome do cliente: %s\n", clt->nomeCliente);
+    printf("Endereço eletrônico: %s\n", clt->email);
+    printf("Celular: %s\n", clt->fone);
+  }
+  printf("\t\t\tTecle ENTER para continuar!\n\n");
+  getchar();
 }
 
 void telaAtualizarCliente(void) {
@@ -241,11 +288,11 @@ void moduloCliente(void) {
 		switch(opcao) {
 			case '1': 	cadastrarCliente();
 						break;
-			case '2': 	telaPesquisarCliente();
+			case '2': 	pesquisarCliente();
 						break;
-			case '3': 	telaAtualizarCliente();
+			case '3': 	AtualizarCliente();
 						break;
-			case '4': 	telaExcluirCliente();
+			case '4': 	ExcluirCliente();
 						break;
 		} 		
 	} while (opcao != '0');
