@@ -9,6 +9,7 @@ struct cliente {
    char status;
 };
 
+void telaErroArquivo(void);
 
 
 void moduloCliente(void);
@@ -23,5 +24,8 @@ char* telaPesquisarCliente(void);
 Cliente* buscarCliente(char*);
 void exibirCliente(Cliente*);
 
-void telaAtualizarCliente(void);
+void atualizarCliente(void);
+char* telaAtualizarCliente(void);
+void regravarCliente(Cliente*);
+
 void telaExcluirCliente(void);

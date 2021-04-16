@@ -6,6 +6,24 @@
 
 typedef struct cliente Cliente;
 
+void moduloCliente(void) {
+  char opcao;
+  do {
+		opcao = menuCliente();
+		switch(opcao) {
+			case '1': 	cadastrarCliente();
+						break;
+			case '2': 	pesquisarCliente();
+						break;
+			case '3': 	atualizarCliente();
+						break;
+			case '4': 	telaExcluirCliente();
+						break;
+		} 		
+	} while (opcao != '0');
+
+}
+
 void cadastrarCliente(void) {
   Cliente *clt;
   clt = telaCadastrarCliente();
@@ -16,19 +34,62 @@ void cadastrarCliente(void) {
 void pesquisarCliente(void) {
   Cliente *clt;
   char* cpf;
-	// função ainda em desenvolvimento
-
 	cpf = telaPesquisarCliente();
-
-  // pesquisa o aluno no arquivo
   clt = buscarCliente(cpf);
-
-  // exibe o aluno pesquisado
   exibirCliente(clt);
-
   free(clt); 
 }
 
+void atualizarCliente(void) {
+	Cliente* clt;
+	char* cpf;
+
+	cpf = telaAtualizarCliente();
+	clt = buscarCliente(cpf);
+	if (clt == NULL) {
+    	printf("\n\nAluno não encontrado!\n\n");
+  	} else {
+		  clt = telaCadastrarCliente();
+		  strcpy(clt->cpfCliente, cpf);
+		  regravarCliente(clt);
+		  // Outra opção:
+		  // excluirAluno(matr);
+		  // gravarAluno(aln);
+	}
+	free(clt);
+}
+
+void telaErroArquivo(void) {
+	limpaTela();
+	printf("\n");
+		printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+	printf("///           = = = = com informações sobre os clientes = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+  printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+	exit(1);
+}
 
 char menuCliente(void) {
   char op;
@@ -124,6 +185,7 @@ Cliente* telaCadastrarCliente(void) {
 	    getchar();
    }
    clt->status = 'C';
+   clt-> quantidadeAlugueis = 0;
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -211,14 +273,15 @@ void exibirCliente(Cliente* clt) {
     printf("Nome do cliente: %s\n", clt->nomeCliente);
     printf("Endereço eletrônico: %s\n", clt->email);
     printf("Celular: %s\n", clt->fone);
+    printf("Quantidade de aluguéis: %i\n", clt->quantidadeAlugueis);
   }
   printf("\t\t\tTecle ENTER para continuar!\n\n");
   getchar();
 }
 
-void telaAtualizarCliente(void) {
-    char cpf[12];
-    char item[9];
+char* telaAtualizarCliente(void) {
+    char* cpf;
+    cpf = (char*) malloc(12*sizeof(char));
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -240,14 +303,37 @@ void telaAtualizarCliente(void) {
 	printf("///           Digite o CPF do cliente: ");
   scanf("%[0-9]", cpf);
   getchar();
-	printf("///           Digite o item a ser atualizado: ");
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", item);
-  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return cpf;
+}
+
+void regravarCliente(Cliente* clt) {
+	int achou;
+	FILE* fp;
+	Cliente* cltLido;
+
+	cltLido = (Cliente*) malloc(sizeof(Cliente));
+	fp = fopen("clientes.dat", "r+b");
+	if (fp == NULL) {
+		telaErroArquivo();
+	}
+	// while(!feof(fp)) {
+	achou = 0;
+	while(fread(cltLido, sizeof(Cliente), 1, fp) && !achou) {
+		//fread(alnLido, sizeof(Aluno), 1, fp);
+		if (strcmp(cltLido->cpfCliente, clt->cpfCliente) == 0) {
+			achou = 1;
+			fseek(fp, -1*sizeof(Cliente), SEEK_CUR);
+        	fwrite(clt, sizeof(Cliente), 1, fp);
+			//break;
+		}
+	}
+	fclose(fp);
+	free(cltLido);
 }
 
 void telaExcluirCliente(void) {
@@ -281,20 +367,3 @@ void telaExcluirCliente(void) {
 	getchar();
 }
 
-void moduloCliente(void) {
-  char opcao;
-  do {
-		opcao = menuCliente();
-		switch(opcao) {
-			case '1': 	cadastrarCliente();
-						break;
-			case '2': 	pesquisarCliente();
-						break;
-			case '3': 	AtualizarCliente();
-						break;
-			case '4': 	ExcluirCliente();
-						break;
-		} 		
-	} while (opcao != '0');
-
-}
