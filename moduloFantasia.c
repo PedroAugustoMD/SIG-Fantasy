@@ -16,9 +16,9 @@ void moduloFantasia(void) {
 						break;
 			case '2': 	pesquisarFantasia();
 						break;
-			case '3': 	atualizarFantasia();
+			case '3': 	telaAtualizarFantasia();
 						break;
-			case '4': 	excluirFantasia();
+			case '4': 	telaExcluirFantasia();
 						break;
 		} 		
 	} while (opcao != '0');
@@ -32,6 +32,15 @@ void cadastrarFantasia(void) {
   free(fant);
 }
 
+void pesquisarFantasia(void) {
+  Fantasia *fant;
+  char* id;
+	id = telaPesquisarFantasia();
+  fant = buscarFantasia(id);
+  exibirFantasia(fant);
+  free(fant); 
+  free(id);
+}
 
 
 
@@ -143,9 +152,10 @@ void gravarFantasia(Fantasia* fant) {
 }
 
 
-void telaPesquisarFantasia(void) {
-    char id[12];
-    system("clear");
+char* telaPesquisarFantasia(void) {
+    char* id;
+    id = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -172,9 +182,53 @@ void telaPesquisarFantasia(void) {
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  delay(1);
+  return id;
 }
 
-void telaAtualizarFantasia(void) {
+Fantasia* buscarFantasia(char* id) {
+  FILE* fp;
+  Fantasia* fant;
+
+  fant = (Fantasia*) malloc(sizeof(Fantasia));
+  fp = fopen("fantasias.dat", "rb");
+  if (fp == NULL) {
+    telaErroArquivo();
+  }
+  while(!feof(fp)) {
+    fread(fant, sizeof(Fantasia), 1, fp);
+    if (strcmp(fant->idFantasia, id) == 0  && (fant->statusCadastro == 'C')) {
+      fclose(fp);
+      return fant;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+void exibirFantasia(Fantasia* fant) {
+
+  if (fant == NULL) {
+    printf("\n= = = Fantasia Inexistente = = =\n");
+  } else {
+    printf("\n= = = Fantasia Cadastrada = = =\n");
+    printf("ID: %s\n", fant->idFantasia);
+    printf("Nome da fantasia: %s\n", fant->nomeFantasia);
+    printf("Valor: %.2f\n", fant->valor);
+    printf("Quantidade de aluguéis: %i\n", fant->quantidadeAlugueis);
+  }
+  if(fant->status == 'D'){
+    printf("Disponível\n");
+  }
+  else{
+    printf("Alugada\n");
+  }
+  printf("\t\t\tTecle ENTER para continuar!\n\n");
+  getchar();
+}
+
+
+char* telaAtualizarFantasia(void) {
     char id[12];
     char item[6];
     system("clear");
@@ -208,7 +262,7 @@ void telaAtualizarFantasia(void) {
 	getchar();
 }
 
-void telaExcluirFantasia(void) {
+char* telaExcluirFantasia(void) {
     char id[12];
     system("clear");
 	printf("\n");
