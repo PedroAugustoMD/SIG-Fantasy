@@ -1,4 +1,4 @@
-typedef struct cliente Cliente;
+typedef struct fantasia Fantasia;
 
 struct fantasia {
    char idFantasia[12];
@@ -9,7 +9,7 @@ struct fantasia {
    char statusCadastro;
 };
 
-
+void telaErroArquivo(void);
 
 void moduloFantasia(void);
 char menuFantasia(void);
@@ -17,14 +17,16 @@ char menuFantasia(void);
 
 Fantasia* telaCadastrarFantasia(void);
 void cadastrarFantasia(void);
-void gravarFantasia(Cliente*);
+void gravarFantasia(Fantasia*);
 
 void pesquisarFantasia(void);
 char* telaPesquisarFantasia(void);
 Fantasia* buscarFantasia(char*);
-void exibirFantasia(Cliente*);
+void exibirFantasia(Fantasia*);
 
-void telaAtualizarFantasia(void);
+void atualizarFantasia(void);
+char* telaAtualizarFantasia(void);
+void regravarFantasia(Fantasia*);
 
-
-void telaExcluirFantasia(void);
+void excluirFantasia(void);
+char* telaExcluirFantasia(void);

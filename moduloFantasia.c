@@ -3,6 +3,36 @@
 #include <string.h>
 #include "moduloFantasia.h"
 #include "validacoes.h"
+#include "moduloCliente.h"
+
+typedef struct fantasia Fantasia;
+
+void moduloFantasia(void) {
+	char opcao;
+  do {
+		opcao = menuFantasia();
+		switch(opcao) {
+			case '1': 	cadastrarFantasia();
+						break;
+			case '2': 	pesquisarFantasia();
+						break;
+			case '3': 	atualizarFantasia();
+						break;
+			case '4': 	excluirFantasia();
+						break;
+		} 		
+	} while (opcao != '0');
+
+}
+
+void cadastrarFantasia(void) {
+  Fantasia *fant;
+  fant = telaCadastrarFantasia();
+  gravarFantasia(fant);
+  free(fant);
+}
+
+
 
 
 
@@ -44,11 +74,9 @@ char menuFantasia(void) {
   return op;
 }
 
-void telaCadastrarFantasia(void) {
-    char id[12];
-	  char nome[52];
-	  float valor;
-    system("clear");
+Fantasia* telaCadastrarFantasia(void) {
+  Fantasia *fant;
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -66,37 +94,54 @@ void telaCadastrarFantasia(void) {
 	printf("///           = = = = = = = = Cadastrar Fantasia = = = = = = = =          ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
+  fant = (Fantasia*) malloc(sizeof(Fantasia));
 	printf("///           ID (Apenas números!): ");
-  scanf("%[^\n]", id);
+  scanf("%[^\n]", fant->idFantasia);
   getchar();
-while (validaID(id) == 0){
+while (validaID(fant->idFantasia) == 0){
       printf("///           ID inválido!: ");
-        scanf("%[^\n]", id);
+        scanf("%[^\n]", fant->idFantasia);
 	    getchar();
    }
 	printf("///           Nome da fantasia: ");
-  scanf("%[^\n]", nome);
+  scanf("%[^\n]", fant->nomeFantasia);
   getchar();
-    while (validarNome(nome) == 0){
+    while (validarNome(fant->nomeFantasia) == 0){
       printf("///           Nome inválido!: ");
-        scanf("%[^\n]", nome);
+        scanf("%[^\n]", fant->nomeFantasia);
 	    getchar();
    }
 	printf("///           Valor do aluguel: ");
-  scanf("%f", &valor);
+  scanf("%f", &fant->valor);
   getchar();
-  while (validaVALOR(valor) == 0){
+  while (validaVALOR(fant->valor) == 0){
       printf("///           Valor inválido!: ");
-        scanf("%f", &valor);
+        scanf("%f", &fant->valor);
 	    getchar();
    }
+   fant->status = 'D';
+   fant->quantidadeAlugueis = 0;
+   fant->statusCadastro = 'C';
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return fant;
 }
+
+void gravarFantasia(Fantasia* fant) {
+  FILE* fp;
+
+  fp = fopen("fantasias.dat", "ab");
+  if (fp == NULL) {
+    telaErroArquivo();
+  }
+  fwrite(fant, sizeof(Fantasia), 1, fp);
+  fclose(fp);
+}
+
 
 void telaPesquisarFantasia(void) {
     char id[12];
@@ -194,20 +239,3 @@ void telaExcluirFantasia(void) {
 	getchar();
 }
 
-void moduloFantasia(void) {
-	char opcao;
-  do {
-		opcao = menuFantasia();
-		switch(opcao) {
-			case '1': 	telaCadastrarFantasia();
-						break;
-			case '2': 	telaPesquisarFantasia();
-						break;
-			case '3': 	telaAtualizarFantasia();
-						break;
-			case '4': 	telaExcluirFantasia();
-						break;
-		} 		
-	} while (opcao != '0');
-
-}
