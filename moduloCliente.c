@@ -17,7 +17,7 @@ void moduloCliente(void) {
 						break;
 			case '3': 	atualizarCliente();
 						break;
-			case '4': 	telaExcluirCliente();
+			case '4': 	excluirCliente();
 						break;
 		} 		
 	} while (opcao != '0');
@@ -38,26 +38,58 @@ void pesquisarCliente(void) {
   clt = buscarCliente(cpf);
   exibirCliente(clt);
   free(clt); 
+  free(cpf);
 }
 
 void atualizarCliente(void) {
 	Cliente* clt;
 	char* cpf;
-
+  
 	cpf = telaAtualizarCliente();
 	clt = buscarCliente(cpf);
 	if (clt == NULL) {
-    	printf("\n\nAluno não encontrado!\n\n");
+    	printf("\n\nCliente não encontrado!\n\n");
   	} else {
 		  clt = telaCadastrarCliente();
 		  strcpy(clt->cpfCliente, cpf);
 		  regravarCliente(clt);
-		  // Outra opção:
-		  // excluirAluno(matr);
-		  // gravarAluno(aln);
 	}
 	free(clt);
+  free(cpf);
 }
+
+void excluirCliente(void) {
+	Cliente* clt;
+	char *cpf;
+  char confirmacao[2];
+	cpf = telaExcluirCliente();
+	clt = (Cliente*) malloc(sizeof(Cliente));
+	clt = buscarCliente(cpf);
+	if (clt == NULL) {
+    	printf("\n\nCliente não encontrado!\n\n");
+  	} else {
+      printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
+      scanf("%[^\n]", confirmacao);
+      getchar();
+      while (validaConfirmacao(confirmacao) == 0){
+      printf("///           Ação inválida!: ");
+        scanf("%[^\n]", confirmacao);
+	    getchar();
+    }
+    if (confirmacao[0] == 'S' || confirmacao[0] == 's'){
+		  clt->status = 'X';
+		  regravarCliente(clt);
+      free(clt);
+		  
+    }
+    else if(confirmacao[0] == 'N' || confirmacao[0] == 'n'){
+      printf("Ação interrompida!");
+    }
+	}
+	free(cpf);
+}
+
+
 
 void telaErroArquivo(void) {
 	limpaTela();
@@ -93,7 +125,7 @@ void telaErroArquivo(void) {
 
 char menuCliente(void) {
   char op;
-  system("clear");
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -132,7 +164,7 @@ char menuCliente(void) {
 
 Cliente* telaCadastrarCliente(void) {
   Cliente *clt;
-  system("clear");
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -200,9 +232,7 @@ void gravarCliente(Cliente* clt) {
 
   fp = fopen("clientes.dat", "ab");
   if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
-    exit(1);
+    telaErroArquivo();
   }
   fwrite(clt, sizeof(Cliente), 1, fp);
   fclose(fp);
@@ -248,13 +278,11 @@ Cliente* buscarCliente(char* cpf) {
   clt = (Cliente*) malloc(sizeof(Cliente));
   fp = fopen("clientes.dat", "rb");
   if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
-    exit(1);
+    telaErroArquivo();
   }
   while(!feof(fp)) {
     fread(clt, sizeof(Cliente), 1, fp);
-    if (strcmp(clt->cpfCliente, cpf) == 0) {
+    if (strcmp(clt->cpfCliente, cpf) == 0  && (clt->status == 'C')) {
       fclose(fp);
       return clt;
     }
@@ -282,7 +310,7 @@ void exibirCliente(Cliente* clt) {
 char* telaAtualizarCliente(void) {
     char* cpf;
     cpf = (char*) malloc(12*sizeof(char));
-    system("clear");
+    limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -321,24 +349,23 @@ void regravarCliente(Cliente* clt) {
 	if (fp == NULL) {
 		telaErroArquivo();
 	}
-	// while(!feof(fp)) {
 	achou = 0;
 	while(fread(cltLido, sizeof(Cliente), 1, fp) && !achou) {
-		//fread(alnLido, sizeof(Aluno), 1, fp);
+
 		if (strcmp(cltLido->cpfCliente, clt->cpfCliente) == 0) {
 			achou = 1;
 			fseek(fp, -1*sizeof(Cliente), SEEK_CUR);
         	fwrite(clt, sizeof(Cliente), 1, fp);
-			//break;
 		}
 	}
 	fclose(fp);
 	free(cltLido);
 }
 
-void telaExcluirCliente(void) {
-      char cpf[12];
-    system("clear");
+char* telaExcluirCliente(void) {
+    char* cpf;
+    cpf = (char*) malloc(12*sizeof(char));
+    limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -365,5 +392,6 @@ void telaExcluirCliente(void) {
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return cpf;
 }
 

@@ -28,4 +28,5 @@ void atualizarCliente(void);
 char* telaAtualizarCliente(void);
 void regravarCliente(Cliente*);
 
-void telaExcluirCliente(void);
+void excluirCliente(void);
+char* telaExcluirCliente(void);
