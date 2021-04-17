@@ -18,7 +18,7 @@ void moduloFantasia(void) {
 						break;
 			case '3': 	atualizarFantasia();
 						break;
-			case '4': 	telaExcluirFantasia();
+			case '4': 	excluirFantasia();
 						break;
 		} 		
 	} while (opcao != '0');
@@ -59,6 +59,36 @@ void atualizarFantasia(void) {
   free(id);
 }
 
+void excluirFantasia(void) {
+	Fantasia* fant;
+	char *id;
+  char confirmacao[2];
+	id = telaExcluirFantasia();
+	fant = (Fantasia*) malloc(sizeof(Fantasia));
+	fant = buscarFantasia(id);
+	if (fant == NULL) {
+    	printf("\n\nFantasia não encontrada!\n\n");
+  	} else {
+      printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
+      scanf("%[^\n]", confirmacao);
+      getchar();
+      while (validaConfirmacao(confirmacao) == 0){
+      printf("///           Ação inválida!: ");
+        scanf("%[^\n]", confirmacao);
+	    getchar();
+    }
+    if (confirmacao[0] == 'S' || confirmacao[0] == 's'){
+		  fant->statusCadastro = 'X';
+		  regravarFantasia(fant);
+      free(fant);
+		  
+    }
+    else if(confirmacao[0] == 'N' || confirmacao[0] == 'n'){
+      printf("Ação interrompida!");
+    }
+	}
+	free(id);
+}
 
 
 char menuFantasia(void) {
@@ -232,13 +262,15 @@ void exibirFantasia(Fantasia* fant) {
     printf("Nome da fantasia: %s\n", fant->nomeFantasia);
     printf("Valor: %.2f\n", fant->valor);
     printf("Quantidade de aluguéis: %i\n", fant->quantidadeAlugueis);
-  }
-  if(fant->status == 'D'){
+    if(fant->status == 'D'){
     printf("Disponível\n");
   }
   else{
     printf("Alugada\n");
   }
+  
+  }
+  
   printf("\t\t\tTecle ENTER para continuar!\n\n");
   getchar();
 }
@@ -301,8 +333,9 @@ void regravarFantasia(Fantasia* fant) {
 
 
 char* telaExcluirFantasia(void) {
-    char id[12];
-    system("clear");
+    char* id;
+    id = (char*) malloc(12*sizeof(char));
+    limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -329,5 +362,6 @@ char* telaExcluirFantasia(void) {
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return id;
 }
 
