@@ -16,7 +16,7 @@ void moduloFantasia(void) {
 						break;
 			case '2': 	pesquisarFantasia();
 						break;
-			case '3': 	telaAtualizarFantasia();
+			case '3': 	atualizarFantasia();
 						break;
 			case '4': 	telaExcluirFantasia();
 						break;
@@ -42,6 +42,22 @@ void pesquisarFantasia(void) {
   free(id);
 }
 
+void atualizarFantasia(void) {
+	Fantasia* fant;
+	char* id;
+  
+	id = telaAtualizarFantasia();
+	fant = buscarFantasia(id);
+	if (fant == NULL) {
+    	printf("\n\nFantasia não encontrada!\n\n");
+  	} else {
+		  fant = telaCadastrarFantasia();
+		  strcpy(fant->idFantasia, id);
+		  regravarFantasia(fant);
+	}
+	free(fant);
+  free(id);
+}
 
 
 
@@ -229,9 +245,9 @@ void exibirFantasia(Fantasia* fant) {
 
 
 char* telaAtualizarFantasia(void) {
-    char id[12];
-    char item[6];
-    system("clear");
+    char* id;
+    id = (char*) malloc(12*sizeof(char));
+    limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -252,15 +268,37 @@ char* telaAtualizarFantasia(void) {
 	printf("///           Digite o ID da fantasia: ");
   scanf("%[0-9]", id);
   getchar();
-	printf("///           Digite o item a ser atualizado: ");
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", item);
-  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
+  return id;
 }
+
+void regravarFantasia(Fantasia* fant) {
+	int achou;
+	FILE* fp;
+	Fantasia* fantLida;
+
+	fantLida = (Fantasia*) malloc(sizeof(Fantasia));
+	fp = fopen("fantasias.dat", "r+b");
+	if (fp == NULL) {
+		telaErroArquivo();
+	}
+	achou = 0;
+	while(fread(fantLida, sizeof(Fantasia), 1, fp) && !achou) {
+
+		if (strcmp(fantLida->idFantasia, fant->idFantasia) == 0) {
+			achou = 1;
+			fseek(fp, -1*sizeof(Fantasia), SEEK_CUR);
+        	fwrite(fant, sizeof(Fantasia), 1, fp);
+		}
+	}
+	fclose(fp);
+	free(fantLida);
+}
+
 
 char* telaExcluirFantasia(void) {
     char id[12];
