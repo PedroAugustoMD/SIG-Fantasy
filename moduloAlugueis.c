@@ -69,7 +69,7 @@ void devolverFantasia(void) {
     fant = buscarFantasia(id);
 
     alg = buscarAluguel(cpf, id);
-    if (alg != NULL){
+    if (alg == NULL || alg->status!='N'){
       printf("Aluguel não encontrado!");
       getchar();
     }
@@ -189,9 +189,8 @@ void gravarAluguel(Aluguel* alg) {
   fclose(fp);
 }
 
-Aluguel* telaDevolverFantasia(Aluguel* alg) {
-  alg = (Aluguel*) malloc(sizeof(Aluguel));
-  double dias;
+Aluguel* telaDevolverFantasia(Aluguel* alg) { 
+  int dias;
   float multa;
   system("clear");
 	printf("\n");
@@ -214,8 +213,8 @@ Aluguel* telaDevolverFantasia(Aluguel* alg) {
 	printf("///     CPF: %s\n", alg->cpfCliente);
   printf("///     ID: %s\n", alg->idFantasia);
   printf("///     Data: %s\n", alg->data);
-  dias = difDatas(alg->data);
-  printf("dias \n%f",dias);
+  dias = difDatas(alg->data) + 1;
+  printf("dias \n%i",dias);
   if(dias>=7){
     multa = (dias - 7) * 2;
     printf("multa %.2f\n",multa);
@@ -269,7 +268,7 @@ int difDatas( char datahora1[] )
     double dias;
     struct tm tm; 
     int ano, mes; 
-    char datahora2[] = "2021.05.10 - 13:10:20";
+    char datahora2[] = "2021.05.12 - 13:10:20";
     ///time_t agora;
     ///agora = time(NULL);
     ///strftime( datahora2, sizeof(datahora2), "%Y.%m.%d - %H:%M:%S", localtime( &agora ) );
@@ -303,7 +302,7 @@ Aluguel* buscarAluguel(char* cpf, char* id) {
   }
   while(!feof(fp)) {
     fread(alg, sizeof(Aluguel), 1, fp);
-    if (strcmp(alg->cpfCliente, cpf) == 0  && strcmp(alg->idFantasia, id) && (alg->status != 'P')) {
+    if ((strcmp(alg->cpfCliente, cpf) == 0)  && (strcmp(alg->idFantasia, id) == 0) && (alg->status != 'P')) {
       fclose(fp);
       return alg;
     }
