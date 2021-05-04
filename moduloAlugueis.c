@@ -214,10 +214,8 @@ Aluguel* telaDevolverFantasia(Aluguel* alg) {
   printf("///     ID: %s\n", alg->idFantasia);
   printf("///     Data: %s\n", alg->data);
   dias = difDatas(alg->data) + 1;
-  printf("dias \n%i",dias);
   if(dias>=7){
     multa = (dias - 7) * 2;
-    printf("multa %.2f\n",multa);
     alg->valorPago+=multa;
     printf("///     Valor com multa: %.2f\n", alg->valorPago);  
   }else{

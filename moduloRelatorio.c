@@ -2,7 +2,56 @@
 #include <stdlib.h>
 #include <string.h>
 #include "moduloRelatorio.h"
+#include "moduloCliente.h"
+#include "moduloFantasia.h"
 #include "validacoes.h"
+#include "moduloAlugueis.h"
+
+void moduloRelatorio(void) {
+	char opcao;
+  do {
+		opcao = menuRelatorios();
+		switch(opcao) {
+			case '1': 	historicoAlugueis();
+						break;
+			case '2': 	clientesCadastrados();
+						break;
+			case '3': 	fantasiasCadastradas();
+						break;
+			case '4': 	alugueisPorCPF();
+						break;
+      case '5': 	alugueisPorID();
+						break;      
+		} 		
+	} while (opcao != '0');
+
+}
+
+void historicoAlugueis(void) {
+
+    telaHistoricoAlugueis();
+}
+
+void clientesCadastrados(void) {
+
+    telaClientesCadastrados();
+}
+
+void fantasiasCadastradas(void) {
+
+    telaFantasiasCadastradas();
+}
+
+void alugueisPorCPF(void) {
+
+    char* cpf;
+
+	  cpf = telaPesquisarCliente();
+    relatAlugueisPorCPF(cpf);
+    free(cpf);
+}
+
+
 
 
 char menuRelatorios(void) {
@@ -26,9 +75,9 @@ char menuRelatorios(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Histórico de aluguéis                                    ///\n");
-	printf("///           2. Verificar datas                                          ///\n");
-	printf("///           3. Cliente mais fiel                                        ///\n");
-	printf("///           4. Fantasia mais alugada                                    ///\n");
+	printf("///           2. Clientes cadastrados                                     ///\n");
+	printf("///           3. Fantasias cadastradas                                    ///\n");
+	printf("///           4. Aluguéis por CPF                                         ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada: ");
@@ -44,9 +93,7 @@ char menuRelatorios(void) {
 }
 
 
-void telaHistoricoFantasia(void) {
-  char cpf[12] = "13942404494";
-  char id[12] = "01";
+void telaHistoricoAlugueis(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -62,17 +109,13 @@ void telaHistoricoFantasia(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
-	printf("///           = = = = = = = = Histórico de Fantasias = = = = = = = =      ///\n");
+	printf("///           = = = = = = = = Histórico de Aluguéis = = = = = = = =      ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Histórico de empréstimos:                                   ///\n");
-  for(int i = 0; i<20;i++){
-	printf("/// -------------------------                                            ///\n");
-  printf("/// CPF: %s                                                              ///\n",cpf);
-  printf("/// ID: %s                                                               ///\n",id);
-	printf("/// -------------------------                                            ///\n");
+  listaHistoricoAlugueis();
  
-  }
+  
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -80,56 +123,6 @@ void telaHistoricoFantasia(void) {
 	getchar();
 }
 
-void telaVerificarDatas(void) {
-  int dia;
-  int mes;
-  int ano;
-  float valor = 100.0;
-    system("clear");
-	printf("\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///                            Developed by                               ///\n");
-  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = = = Verificar Datas = = = = = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
-	printf("///           Digite o dia: ");
-  scanf("%i", &dia);
-  getchar();
-	printf("///           Digite o mês: ");
-  scanf("%i", &mes);
-  getchar();
-  printf("///           Digite o ano: ");
-  scanf("%i", &ano);
-  getchar();
- while (validaData(dia, mes, ano) == 0){
-      printf("///           Data inválida!: ");
-      printf("///           Digite o dia: ");
-      scanf("%i", &dia);
-      getchar();
-	    printf("///           Digite o mês: ");
-      scanf("%i", &mes);
-      getchar();
-      printf("///           Digite o ano: ");
-      scanf("%i", &ano);
-      getchar();
-   }
-	printf("///  O dia %d/%d/%d rendeu R$%.2f                                           ///\n",dia,mes,ano,valor);
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
-}
 
 void telaClienteFiel(void) {
     system("clear");
@@ -187,20 +180,172 @@ void telaFantasiaMaisAlugada(void) {
 	getchar();
 }
 
-void moduloRelatorio(void) {
-	char opcao;
-  do {
-		opcao = menuRelatorios();
-		switch(opcao) {
-			case '1': 	telaHistoricoFantasia();
-						break;
-			case '2': 	telaVerificarDatas();
-						break;
-			case '3': 	telaClienteFiel();
-						break;
-			case '4': 	telaFantasiaMaisAlugada();
-						break;
-		} 		
-	} while (opcao != '0');
+void listaHistoricoAlugueis(void) {
+    FILE* fp;
+    Aluguel* alg;
+    alg = (Aluguel*) malloc(sizeof(Aluguel));
+    fp = fopen("alugueis.dat", "rb");
+    while (fread(alg, sizeof(Aluguel), 1, fp)) {
+            printf("///           Data: %s                                 ///\n", alg->data);
+            printf("///           CPF: %s                                            ///\n", alg->cpfCliente);
+            printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
+            printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
+            if (alg->status == 'N'){
+              printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
+            }  else{
+              printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
+            }
+    }
+    fclose(fp);
+    free(alg);
+}
 
+void listaClientesCadastrados(void) {
+    FILE* fp;
+    Cliente* clt;
+    clt = (Cliente*) malloc(sizeof(Cliente));
+    fp = fopen("clientes.dat", "rb");
+    while (fread(clt, sizeof(Cliente), 1, fp)) {
+          if(clt->status == 'C'){
+            printf("///           CPF: %s                                           ///\n", clt->cpfCliente);
+            printf("///           Nome: %s                                          ///\n", clt->cpfCliente);
+            printf("///           Email: %s                                         ///\n", clt->email);
+            printf("///           Telefone: %s                                      ///\n", clt->fone);
+            printf("///           Qtd. de Aluguéis: %i                                     ///\n", clt->quantidadeAlugueis);
+            printf("------------------------------------------------------------------\n");
+          }     
+    }
+    fclose(fp);
+    free(clt);
+}
+
+void telaClientesCadastrados(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///           = = = = = = = = Clientes Cadastrados = = = = = = = =        ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Lista de clientes:                                          ///\n");
+  listaClientesCadastrados();
+ 
+  
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void listaFantasiasCadastradas(void) {
+    FILE* fp;
+    Fantasia* fant;
+    fant = (Fantasia*) malloc(sizeof(Fantasia));
+    fp = fopen("fantasias.dat", "rb");
+    while (fread(fant, sizeof(Fantasia), 1, fp)) {
+          if(fant->statusCadastro == 'C'){
+            printf("///           ID: %s                                                      ///\n", fant->idFantasia);
+            printf("///           Nome: %s                                                ///\n", fant->nomeFantasia);
+            printf("///           Valor: %.2f                                                ///\n", fant->valor);
+            printf("///           Qtd. de Aluguéis: %i                                         ///\n", fant->quantidadeAlugueis);
+          if (fant->status == 'D'){
+              printf("///           Disponível                                                  ///\n ------------------------------------------------------------------\n");
+            }  else{
+              printf("///           Alugada                                                     ///\n ------------------------------------------------------------------\n");
+            }
+          }     
+    }
+    fclose(fp);
+    free(fant);
+}
+
+void telaFantasiasCadastradas(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///           = = = = = = = = Fantasias Cadastradas = = = = = = = =        ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Lista de Fantasias:                                         ///\n");
+  listaFantasiasCadastradas();
+ 
+  
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void relatAlugueisPorCPF(char* cpf) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                            Developed by                               ///\n");
+  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///           = = = = = = = = CPF: %s = = = = = = = =          ///\n",cpf);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Histórico de empréstimos:                                   ///\n");
+  listaAlugueisPorCPF(cpf);
+  printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+void listaAlugueisPorCPF(char* cpf) {
+    FILE* fp;
+    Aluguel* alg;
+    alg = (Aluguel*) malloc(sizeof(Aluguel));
+    fp = fopen("alugueis.dat", "rb");
+    while (fread(alg, sizeof(Aluguel), 1, fp)) {
+      if(strcmp(alg->cpfCliente, cpf) == 0){
+            printf("///           Data: %s                                 ///\n", alg->data);
+            printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
+            printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
+            if (alg->status == 'N'){
+              printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
+            }  else{
+              printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
+            }
+      }
+    }
+    fclose(fp);
+    free(alg);
 }
