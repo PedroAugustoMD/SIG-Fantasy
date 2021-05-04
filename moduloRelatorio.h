@@ -1,8 +1,6 @@
 void moduloRelatorio(void);
 char menuRelatorios(void);
 void telaHistoricoAlugueis(void);
-void telaClienteFiel(void);
-void telaFantasiaMaisAlugada(void);
 void listaHistoricoAlugueis(void);
 void historicoAlugueis(void);
 void clientesCadastrados(void);
@@ -15,3 +13,8 @@ void alugueisPorCPF(void);
 void relatAlugueisPorCPF(char*);
 void listaAlugueisPorCPF(char*);
 void alugueisPorID(void);
+void relatAlugueisPorID(char*);
+void listaAlugueisPorID(char*);
+void fantasiasDisponiveis(void);
+void telaFantasiasDisponiveis(void);
+void listaFantasiasDisponiveis(void);

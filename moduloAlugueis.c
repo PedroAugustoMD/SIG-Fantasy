@@ -4,6 +4,7 @@
 #include "moduloAlugueis.h"
 #include "moduloCliente.h"
 #include "moduloFantasia.h"
+#include "moduloRelatorio.h"
 #include "validacoes.h"
 #include <time.h>
 typedef struct aluguel Aluguel;
@@ -17,7 +18,7 @@ void moduloAlugueis(void) {
 						break;
 			case '2': 	devolverFantasia();
 						break;
-			case '3': 	telaListarFantasia();
+			case '3': 	fantasiasDisponiveis();
 						break;
 		} 		
 	} while (opcao != '0');
@@ -231,33 +232,6 @@ Aluguel* telaDevolverFantasia(Aluguel* alg) {
   return alg;
 }
 
-void telaListarFantasia(void) {
-    system("clear");
-	printf("\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          = = = =             Sig Fantasy             = = = =          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///                            Developed by                               ///\n");
-  printf("///            @PedroAugustoMD & @leonardodantas4 - Jan, 2021             ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = = = Listar Fantasia = = = = = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
-	printf("///           Fantasias disponíveis:                                      ///\n");
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
-}
 
 int difDatas( char datahora1[] )
 {
