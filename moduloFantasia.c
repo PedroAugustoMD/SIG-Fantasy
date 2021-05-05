@@ -27,9 +27,14 @@ void moduloFantasia(void) {
 
 void cadastrarFantasia(void) {
   Fantasia *fant;
-  fant = telaCadastrarFantasia();
-  gravarFantasia(fant);
-  free(fant);
+  fant = telaCadastrarFantasia(1);
+  if (fant == NULL){
+    printf("Fantasia já cadastrada!");
+  }
+  else{
+    gravarFantasia(fant);
+    free(fant);
+  }
 }
 
 void pesquisarFantasia(void) {
@@ -52,7 +57,7 @@ void atualizarFantasia(void) {
     printf("\n\nFantasia não encontrada!\n\n");
   } 
   else {
-		fant = telaCadastrarFantasia();
+		fant = telaCadastrarFantasia(2);
 		strcpy(fant->idFantasia, id);
 		regravarFantasia(fant);
 	}
@@ -130,8 +135,9 @@ char menuFantasia(void) {
   return op;
 }
 
-Fantasia* telaCadastrarFantasia(void) {
+Fantasia* telaCadastrarFantasia(int tipo) {
   Fantasia *fant;
+  char id[6];
   limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -150,41 +156,48 @@ Fantasia* telaCadastrarFantasia(void) {
 	printf("///           = = = = = = = = Cadastrar Fantasia = = = = = = = =          ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-  fant = (Fantasia*) malloc(sizeof(Fantasia));
 	printf("///           ID (Apenas números!): ");
-  scanf("%[^\n]", fant->idFantasia);
+  scanf("%[^\n]", id);
   getchar();
-  while (validaID(fant->idFantasia) == 0){
+  while (validaID(id) == 0){
     printf("///           ID inválido!: ");
-    scanf("%[^\n]", fant->idFantasia);
+    scanf("%[^\n]", id);
 	  getchar();
   }
-	printf("///           Nome da fantasia: ");
-  scanf("%[^\n]", fant->nomeFantasia);
-  getchar();
-  while (validarNome(fant->nomeFantasia) == 0){
-    printf("///           Nome inválido!: ");
+  if((buscarFantasiaCadastro(id) != NULL) && (tipo == 1) ){
+    return NULL;
+    free(fant);
+  }
+  else{
+    fant = (Fantasia*) malloc(sizeof(Fantasia));
+    strcpy(fant->idFantasia, id);
+	  printf("///           Nome da fantasia: ");
     scanf("%[^\n]", fant->nomeFantasia);
-	  getchar();
-  }
-	printf("///           Valor do aluguel: ");
-  scanf("%f", &fant->valor);
-  getchar();
-  while (validaVALOR(fant->valor) == 0){
-    printf("///           Valor inválido!: ");
+    getchar();
+    while (validarNome(fant->nomeFantasia) == 0){
+      printf("///           Nome inválido!: ");
+      scanf("%[^\n]", fant->nomeFantasia);
+	    getchar();
+    }
+	  printf("///           Valor do aluguel: ");
     scanf("%f", &fant->valor);
+    getchar();
+    while (validaVALOR(fant->valor) == 0){
+      printf("///           Valor inválido!: ");
+      scanf("%f", &fant->valor);
+	    getchar();
+    }
+    fant->status = 'D';
+    fant->quantidadeAlugueis = 0;
+    fant->statusCadastro = 'C';
+	  printf("///                                                                       ///\n");
+	  printf("///                                                                       ///\n");
+	  printf("/////////////////////////////////////////////////////////////////////////////\n");
+	  printf("\n");
+	  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	  getchar();
-   }
-   fant->status = 'D';
-   fant->quantidadeAlugueis = 0;
-   fant->statusCadastro = 'C';
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
-  return fant;
+    return fant;
+  }
 }
 
 void gravarFantasia(Fantasia* fant) {
@@ -367,3 +380,22 @@ char* telaExcluirFantasia(void) {
   return id;
 }
 
+Fantasia* buscarFantasiaCadastro(char* id) {
+  FILE* fp;
+  Fantasia* fant;
+
+  fant = (Fantasia*) malloc(sizeof(Fantasia));
+  fp = fopen("fantasias.dat", "rb");
+  if (fp == NULL) {
+    return NULL;
+  }
+  while(!feof(fp)) {
+    fread(fant, sizeof(Fantasia), 1, fp);
+    if (strcmp(fant->idFantasia, id) == 0  && (fant->statusCadastro == 'C')) {
+      fclose(fp);
+      return fant;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}

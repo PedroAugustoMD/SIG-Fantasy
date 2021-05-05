@@ -26,9 +26,14 @@ void moduloCliente(void) {
 
 void cadastrarCliente(void) {
   Cliente *clt;
-  clt = telaCadastrarCliente();
-  gravarCliente(clt);
-  free(clt);
+  clt = telaCadastrarCliente(1);
+  if (clt == NULL){
+    printf("Cliente já cadastrado!");
+  }
+  else{
+    gravarCliente(clt);
+    free(clt);
+  }
 }
 
 void pesquisarCliente(void) {
@@ -51,7 +56,7 @@ void atualizarCliente(void) {
     	printf("\n\nCliente não encontrado!\n\n");
   } 
   else {
-		clt = telaCadastrarCliente();
+		clt = telaCadastrarCliente(2);
 		strcpy(clt->cpfCliente, cpf);
 		regravarCliente(clt);
 	}
@@ -164,8 +169,9 @@ char menuCliente(void) {
 
 }
 
-Cliente* telaCadastrarCliente(void) {
+Cliente* telaCadastrarCliente(int tipo) {
   Cliente *clt;
+  char cpf[12];
   limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -184,48 +190,55 @@ Cliente* telaCadastrarCliente(void) {
 	printf("///           = = = = = = = = Cadastrar Cliente = = = = = = = =           ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = =           ///\n");
 	printf("///                                                                       ///\n");
-  clt = (Cliente*) malloc(sizeof(Cliente));
 	printf("///           CPF (Apenas números!): ");
-  scanf("%[^\n]", clt->cpfCliente);
+  scanf("%[^\n]", cpf);
   getchar();
-  while (validaCPF(clt->cpfCliente) == 0){
+  while (validaCPF(cpf) == 0){
     printf("///           CPF inválido!: ");
-    scanf("%[^\n]", clt->cpfCliente);
+    scanf("%[^\n]", cpf);
 	  getchar();
   }
-	printf("///           Nome: ");
-  scanf("%[^\n]", clt->nomeCliente);
-  getchar();
-  while (validarNome(clt->nomeCliente) == 0){
+  if((buscarClienteCadastro(cpf) != NULL) && (tipo == 1) ){
+    return NULL;
+    free(clt);
+  }
+  else{
+    clt = (Cliente*) malloc(sizeof(Cliente));
+    strcpy(clt->cpfCliente, cpf);
+	  printf("///           Nome: ");
+    scanf("%[^\n]", clt->nomeCliente);
+    getchar();
+    while (validarNome(clt->nomeCliente) == 0){
       printf("///           Nome inválido!: ");
       scanf("%[^\n]", clt->nomeCliente);
 	    getchar();
-   }
-	printf("///           E-mail: ");
-  scanf("%[^\n]", clt->email);
-  getchar();
-  while (validaEmail(clt->email) == 0){
+    }
+	  printf("///           E-mail: ");
+    scanf("%[^\n]", clt->email);
+    getchar();
+    while (validaEmail(clt->email) == 0){
       printf("///           Email inválido!: ");
       scanf("%[^\n]", clt->email);
 	    getchar();
-   }
-	printf("///           Telefone (Apenas números!): ");
-  scanf("%[^\n]", clt->fone);
-  getchar();
-  while (validaTelefone(clt->fone) == 0){
+    }
+	  printf("///           Telefone (Apenas números!): ");
+    scanf("%[^\n]", clt->fone);
+    getchar();
+    while (validaTelefone(clt->fone) == 0){
       printf("///           Telefone inválido!: ");
       scanf("%[^\n]", clt->fone);
 	    getchar();
-   }
-  clt->status = 'C';
-  clt-> quantidadeAlugueis = 0;
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
-  return clt;
+    }
+    clt->status = 'C';
+    clt-> quantidadeAlugueis = 0;
+	  printf("///                                                                       ///\n");
+	  printf("///                                                                       ///\n");
+	  printf("/////////////////////////////////////////////////////////////////////////////\n");
+	  printf("\n");
+	  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	  getchar();
+    return clt;
+  }
 }
 
 void gravarCliente(Cliente* clt) {
@@ -393,4 +406,25 @@ char* telaExcluirCliente(void) {
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return cpf;
+}
+
+
+Cliente* buscarClienteCadastro(char* cpf) {
+  FILE* fp;
+  Cliente* clt;
+
+  clt = (Cliente*) malloc(sizeof(Cliente));
+  fp = fopen("clientes.dat", "rb");
+  if (fp == NULL) {
+    return NULL;
+  }
+  while(!feof(fp)) {
+    fread(clt, sizeof(Cliente), 1, fp);
+    if (strcmp(clt->cpfCliente, cpf) == 0  && (clt->status == 'C')) {
+      fclose(fp);
+      return clt;
+    }
+  }
+  fclose(fp);
+  return NULL;
 }

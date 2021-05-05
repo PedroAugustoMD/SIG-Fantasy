@@ -1,7 +1,7 @@
 typedef struct fantasia Fantasia;
 
 struct fantasia {
-   char idFantasia[12];
+   char idFantasia[6];
    char nomeFantasia[51];
    float valor;
    char status;
@@ -15,7 +15,7 @@ void moduloFantasia(void);
 char menuFantasia(void);
 
 
-Fantasia* telaCadastrarFantasia(void);
+Fantasia* telaCadastrarFantasia(int);
 void cadastrarFantasia(void);
 void gravarFantasia(Fantasia*);
 
@@ -30,3 +30,5 @@ void regravarFantasia(Fantasia*);
 
 void excluirFantasia(void);
 char* telaExcluirFantasia(void);
+
+Fantasia* buscarFantasiaCadastro(char*);

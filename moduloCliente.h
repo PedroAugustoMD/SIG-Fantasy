@@ -15,7 +15,7 @@ void telaErroArquivo(void);
 void moduloCliente(void);
 char menuCliente(void);
 
-Cliente* telaCadastrarCliente(void);
+Cliente* telaCadastrarCliente(int);
 void cadastrarCliente(void);
 void gravarCliente(Cliente*);
 
@@ -30,3 +30,4 @@ void regravarCliente(Cliente*);
 
 void excluirCliente(void);
 char* telaExcluirCliente(void);
+Cliente* buscarClienteCadastro(char*);
