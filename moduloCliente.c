@@ -49,10 +49,11 @@ void atualizarCliente(void) {
 	clt = buscarCliente(cpf);
 	if (clt == NULL) {
     	printf("\n\nCliente não encontrado!\n\n");
-  	} else {
-		  clt = telaCadastrarCliente();
-		  strcpy(clt->cpfCliente, cpf);
-		  regravarCliente(clt);
+  } 
+  else {
+		clt = telaCadastrarCliente();
+		strcpy(clt->cpfCliente, cpf);
+		regravarCliente(clt);
 	}
 	free(clt);
   free(cpf);
@@ -66,14 +67,15 @@ void excluirCliente(void) {
 	clt = (Cliente*) malloc(sizeof(Cliente));
 	clt = buscarCliente(cpf);
 	if (clt == NULL) {
-    	printf("\n\nCliente não encontrado!\n\n");
-  	} else {
-      printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
-      scanf("%[^\n]", confirmacao);
-      getchar();
-      while (validaConfirmacao(confirmacao) == 0){
+    printf("\n\nCliente não encontrado!\n\n");
+  } 
+  else {
+    printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
+    scanf("%[^\n]", confirmacao);
+    getchar();
+    while (validaConfirmacao(confirmacao) == 0){
       printf("///           Ação inválida!: ");
-        scanf("%[^\n]", confirmacao);
+      scanf("%[^\n]", confirmacao);
 	    getchar();
     }
     if (confirmacao[0] == 'S' || confirmacao[0] == 's'){
@@ -94,7 +96,7 @@ void excluirCliente(void) {
 void telaErroArquivo(void) {
 	limpaTela();
 	printf("\n");
-		printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
@@ -186,18 +188,17 @@ Cliente* telaCadastrarCliente(void) {
 	printf("///           CPF (Apenas números!): ");
   scanf("%[^\n]", clt->cpfCliente);
   getchar();
-  
-   while (validaCPF(clt->cpfCliente) == 0){
-      printf("///           CPF inválido!: ");
-        scanf("%[^\n]", clt->cpfCliente);
-	    getchar();
-   }
+  while (validaCPF(clt->cpfCliente) == 0){
+    printf("///           CPF inválido!: ");
+    scanf("%[^\n]", clt->cpfCliente);
+	  getchar();
+  }
 	printf("///           Nome: ");
   scanf("%[^\n]", clt->nomeCliente);
   getchar();
   while (validarNome(clt->nomeCliente) == 0){
       printf("///           Nome inválido!: ");
-        scanf("%[^\n]", clt->nomeCliente);
+      scanf("%[^\n]", clt->nomeCliente);
 	    getchar();
    }
 	printf("///           E-mail: ");
@@ -213,11 +214,11 @@ Cliente* telaCadastrarCliente(void) {
   getchar();
   while (validaTelefone(clt->fone) == 0){
       printf("///           Telefone inválido!: ");
-        scanf("%[^\n]", clt->fone);
+      scanf("%[^\n]", clt->fone);
 	    getchar();
    }
-   clt->status = 'C';
-   clt-> quantidadeAlugueis = 0;
+  clt->status = 'C';
+  clt-> quantidadeAlugueis = 0;
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -302,15 +303,15 @@ void exibirCliente(Cliente* clt) {
     printf("Endereço eletrônico: %s\n", clt->email);
     printf("Celular: %s\n", clt->fone);
     printf("Quantidade de aluguéis: %i\n", clt->quantidadeAlugueis);
-  }
+    }
   printf("\t\t\tTecle ENTER para continuar!\n\n");
   getchar();
 }
 
 char* telaAtualizarCliente(void) {
-    char* cpf;
-    cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  char* cpf;
+  cpf = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -351,7 +352,6 @@ void regravarCliente(Cliente* clt) {
 	}
 	achou = 0;
 	while(fread(cltLido, sizeof(Cliente), 1, fp) && !achou) {
-
 		if (strcmp(cltLido->cpfCliente, clt->cpfCliente) == 0) {
 			achou = 1;
 			fseek(fp, -1*sizeof(Cliente), SEEK_CUR);
@@ -363,9 +363,9 @@ void regravarCliente(Cliente* clt) {
 }
 
 char* telaExcluirCliente(void) {
-    char* cpf;
-    cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  char* cpf;
+  cpf = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -394,4 +394,3 @@ char* telaExcluirCliente(void) {
 	getchar();
   return cpf;
 }
-

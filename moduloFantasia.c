@@ -49,11 +49,12 @@ void atualizarFantasia(void) {
 	id = telaAtualizarFantasia();
 	fant = buscarFantasia(id);
 	if (fant == NULL) {
-    	printf("\n\nFantasia não encontrada!\n\n");
-  	} else {
-		  fant = telaCadastrarFantasia();
-		  strcpy(fant->idFantasia, id);
-		  regravarFantasia(fant);
+    printf("\n\nFantasia não encontrada!\n\n");
+  } 
+  else {
+		fant = telaCadastrarFantasia();
+		strcpy(fant->idFantasia, id);
+		regravarFantasia(fant);
 	}
 	free(fant);
   free(id);
@@ -68,21 +69,21 @@ void excluirFantasia(void) {
 	fant = buscarFantasia(id);
 	if (fant == NULL) {
     	printf("\n\nFantasia não encontrada!\n\n");
-  	} else {
-      printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
-      scanf("%[^\n]", confirmacao);
-      getchar();
-      while (validaConfirmacao(confirmacao) == 0){
+  } 
+  else {
+    printf("Digite 's' para continuar a exclusão ou 'n' para interromper: ");
+    scanf("%[^\n]", confirmacao);
+    getchar();
+    while (validaConfirmacao(confirmacao) == 0){
       printf("///           Ação inválida!: ");
-        scanf("%[^\n]", confirmacao);
+      scanf("%[^\n]", confirmacao);
 	    getchar();
     }
     if (confirmacao[0] == 'S' || confirmacao[0] == 's'){
-		  fant->statusCadastro = 'X';
-		  regravarFantasia(fant);
-      free(fant);
-		  
-    }
+		fant->statusCadastro = 'X';
+		regravarFantasia(fant);
+    free(fant);
+		}
     else if(confirmacao[0] == 'N' || confirmacao[0] == 'n'){
       printf("Ação interrompida!");
     }
@@ -153,26 +154,26 @@ Fantasia* telaCadastrarFantasia(void) {
 	printf("///           ID (Apenas números!): ");
   scanf("%[^\n]", fant->idFantasia);
   getchar();
-while (validaID(fant->idFantasia) == 0){
-      printf("///           ID inválido!: ");
-        scanf("%[^\n]", fant->idFantasia);
-	    getchar();
-   }
+  while (validaID(fant->idFantasia) == 0){
+    printf("///           ID inválido!: ");
+    scanf("%[^\n]", fant->idFantasia);
+	  getchar();
+  }
 	printf("///           Nome da fantasia: ");
   scanf("%[^\n]", fant->nomeFantasia);
   getchar();
-    while (validarNome(fant->nomeFantasia) == 0){
-      printf("///           Nome inválido!: ");
-        scanf("%[^\n]", fant->nomeFantasia);
-	    getchar();
-   }
+  while (validarNome(fant->nomeFantasia) == 0){
+    printf("///           Nome inválido!: ");
+    scanf("%[^\n]", fant->nomeFantasia);
+	  getchar();
+  }
 	printf("///           Valor do aluguel: ");
   scanf("%f", &fant->valor);
   getchar();
   while (validaVALOR(fant->valor) == 0){
-      printf("///           Valor inválido!: ");
-        scanf("%f", &fant->valor);
-	    getchar();
+    printf("///           Valor inválido!: ");
+    scanf("%f", &fant->valor);
+	  getchar();
    }
    fant->status = 'D';
    fant->quantidadeAlugueis = 0;
@@ -199,8 +200,8 @@ void gravarFantasia(Fantasia* fant) {
 
 
 char* telaPesquisarFantasia(void) {
-    char* id;
-    id = (char*) malloc(12*sizeof(char));
+  char* id;
+  id = (char*) malloc(12*sizeof(char));
   limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -256,18 +257,19 @@ void exibirFantasia(Fantasia* fant) {
 
   if (fant == NULL) {
     printf("\n= = = Fantasia Inexistente = = =\n");
-  } else {
+  } 
+  else {
     printf("\n= = = Fantasia Cadastrada = = =\n");
     printf("ID: %s\n", fant->idFantasia);
     printf("Nome da fantasia: %s\n", fant->nomeFantasia);
     printf("Valor: %.2f\n", fant->valor);
     printf("Quantidade de aluguéis: %i\n", fant->quantidadeAlugueis);
     if(fant->status == 'D'){
-    printf("Disponível\n");
-  }
-  else{
-    printf("Alugada\n");
-  }
+      printf("Disponível\n");
+    }
+    else{
+      printf("Alugada\n");
+    }
   
   }
   
@@ -277,9 +279,9 @@ void exibirFantasia(Fantasia* fant) {
 
 
 char* telaAtualizarFantasia(void) {
-    char* id;
-    id = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  char* id;
+  id = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -324,7 +326,7 @@ void regravarFantasia(Fantasia* fant) {
 		if (strcmp(fantLida->idFantasia, fant->idFantasia) == 0) {
 			achou = 1;
 			fseek(fp, -1*sizeof(Fantasia), SEEK_CUR);
-        	fwrite(fant, sizeof(Fantasia), 1, fp);
+      fwrite(fant, sizeof(Fantasia), 1, fp);
 		}
 	}
 	fclose(fp);
@@ -333,9 +335,9 @@ void regravarFantasia(Fantasia* fant) {
 
 
 char* telaExcluirFantasia(void) {
-    char* id;
-    id = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  char* id;
+  id = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");

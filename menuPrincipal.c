@@ -5,8 +5,8 @@
 #include "validacoes.h"
 
 char menuPrincipal(void) {
-    char op;
-    system("clear");
+  char op;
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");

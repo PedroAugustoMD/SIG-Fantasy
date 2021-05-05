@@ -41,50 +41,49 @@ void alugarFantasia(void) {
     getchar();
   }
   else{
-  alg = telaAlugarFantasia(clt->cpfCliente, fant->idFantasia, fant->valor);
-  if (alg==NULL){
+    alg = telaAlugarFantasia(clt->cpfCliente, fant->idFantasia, fant->valor);
+    if (alg==NULL){
     printf("Empréstimo cancelado!");
     getchar();
+    }
+    gravarAluguel(alg);
+    fant->status = 'A';
+    clt->quantidadeAlugueis+=1;
+    fant->quantidadeAlugueis+=1;
+    regravarFantasia(fant);
+    regravarCliente(clt);
   }
-  gravarAluguel(alg);
-  fant->status = 'A';
-  clt->quantidadeAlugueis+=1;
-  fant->quantidadeAlugueis+=1;
-  regravarFantasia(fant);
-  regravarCliente(clt);
-  }
-     free(cpf);
-    free(clt);
-    free(id);
-    free(fant);
-    free(alg);
+  free(cpf);
+  free(clt);
+  free(id);
+  free(fant);
+  free(alg);
 }
 
 void devolverFantasia(void) {
-    Aluguel *alg;
-    Fantasia *fant;
-    char* cpf;
-    char* id;
-    cpf = telaPesquisarCliente();
-    id = telaPesquisarFantasia();
-    fant = buscarFantasia(id);
-
-    alg = buscarAluguel(cpf, id);
-    if (alg == NULL || alg->status!='N'){
-      printf("Aluguel não encontrado!");
-      getchar();
-    }
-    else{
-      alg = telaDevolverFantasia(alg);
-      alg->status = 'P';
-      fant->status = 'D';
-      regravarFantasia(fant);
-      regravarAluguel(alg);
-    }
-    free(cpf);
-    free(id);
-    free(fant);
-    free(alg);
+  Aluguel *alg;
+  Fantasia *fant;
+  char* cpf;
+  char* id;
+  cpf = telaPesquisarCliente();
+  id = telaPesquisarFantasia();
+  fant = buscarFantasia(id);
+  alg = buscarAluguel(cpf, id);
+  if (alg == NULL || alg->status!='N'){
+    printf("Aluguel não encontrado!");
+    getchar();
+  }
+  else{
+    alg = telaDevolverFantasia(alg);
+    alg->status = 'P';
+    fant->status = 'D';
+    regravarFantasia(fant);
+    regravarAluguel(alg);
+  }
+  free(cpf);
+  free(id);
+  free(fant);
+  free(alg);
 }
 
 char menuAlugueis(void) {
@@ -129,7 +128,7 @@ Aluguel* telaAlugarFantasia(char* cpf, char* id, float valor) {
   time_t agora;
   char datahora[100];
   agora = time(NULL);
-   strftime( datahora, sizeof(datahora), "%Y.%m.%d - %H:%M:%S", localtime( &agora ) );
+  strftime( datahora, sizeof(datahora), "%Y.%m.%d - %H:%M:%S", localtime( &agora ) );
   Aluguel *alg;
   limpaTela();
 	printf("\n");
@@ -149,23 +148,21 @@ Aluguel* telaAlugarFantasia(char* cpf, char* id, float valor) {
 	printf("///           = = = = = = = = Alugar Fantasia = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
   printf("///                                                                       ///\n");
-  alg = (Aluguel*) malloc(sizeof(Aluguel));
-	
-
+  alg = (Aluguel*) malloc(sizeof(Aluguel));	
 	printf("///           Confirma o aluguel (s/n)? ");
   scanf("%[^\n]", confirmacao);
   getchar();
-    while (validaConfirmacao(confirmacao) == 0){
-      printf("///           Ação inválida!: ");
-        scanf("%[^\n]", confirmacao);
-	    getchar();
-   }
-   if(strcmp (confirmacao, "S") == 0 || strcmp (confirmacao, "s") == 0){
-      strcpy(alg->cpfCliente, cpf);
-	    strcpy(alg->idFantasia, id);
-      alg->valorPago = valor;
-      strcpy(alg->data, datahora);
-      alg->status='N';
+  while (validaConfirmacao(confirmacao) == 0){
+    printf("///           Ação inválida!: ");
+    scanf("%[^\n]", confirmacao);
+	  getchar();
+  }
+  if(strcmp (confirmacao, "S") == 0 || strcmp (confirmacao, "s") == 0){
+    strcpy(alg->cpfCliente, cpf);
+	  strcpy(alg->idFantasia, id);
+    alg->valorPago = valor;
+    strcpy(alg->data, datahora);
+    alg->status='N';
    }
    else{
      free(alg);
@@ -219,7 +216,8 @@ Aluguel* telaDevolverFantasia(Aluguel* alg) {
     multa = (dias - 7) * 2;
     alg->valorPago+=multa;
     printf("///     Valor com multa: %.2f\n", alg->valorPago);  
-  }else{
+  }
+  else{
     printf("///     Valor: %.2f\n", alg->valorPago);
   }
   getchar();
@@ -232,7 +230,7 @@ Aluguel* telaDevolverFantasia(Aluguel* alg) {
   return alg;
 }
 
-
+///Diferença de datas - Adaptado de: https://pt.stackoverflow.com/questions/126793/como-declarar-uma-vari%C3%A1vel-de-data-em-c
 int difDatas( char datahora1[] )
 {
     time_t t1;
@@ -240,7 +238,7 @@ int difDatas( char datahora1[] )
     double dias;
     struct tm tm; 
     int ano, mes; 
-    char datahora2[] = "2021.05.12 - 13:10:20";
+    char datahora2[] = "2021.05.14 - 13:10:20";
     ///time_t agora;
     ///agora = time(NULL);
     ///strftime( datahora2, sizeof(datahora2), "%Y.%m.%d - %H:%M:%S", localtime( &agora ) );

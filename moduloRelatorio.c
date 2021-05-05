@@ -106,7 +106,7 @@ char menuRelatorios(void) {
 
 
 void telaHistoricoAlugueis(void) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -125,9 +125,7 @@ void telaHistoricoAlugueis(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = = = = =       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Histórico de empréstimos:                                   ///\n");
-  listaHistoricoAlugueis();
- 
-  
+  listaHistoricoAlugueis(); 
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -142,15 +140,16 @@ void listaHistoricoAlugueis(void) {
     alg = (Aluguel*) malloc(sizeof(Aluguel));
     fp = fopen("alugueis.dat", "rb");
     while (fread(alg, sizeof(Aluguel), 1, fp)) {
-            printf("///           Data: %s                                 ///\n", alg->data);
-            printf("///           CPF: %s                                            ///\n", alg->cpfCliente);
-            printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
-            printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
-            if (alg->status == 'N'){
-              printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
-            }  else{
-              printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
-            }
+      printf("///           Data: %s                                 ///\n", alg->data);
+      printf("///           CPF: %s                                            ///\n", alg->cpfCliente);
+      printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
+      printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
+      if (alg->status == 'N'){
+        printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
+      }  
+      else{
+        printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
+      }
     }
     fclose(fp);
     free(alg);
@@ -162,21 +161,21 @@ void listaClientesCadastrados(void) {
     clt = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("clientes.dat", "rb");
     while (fread(clt, sizeof(Cliente), 1, fp)) {
-          if(clt->status == 'C'){
-            printf("///           CPF: %s                                           ///\n", clt->cpfCliente);
-            printf("///           Nome: %s                                          ///\n", clt->cpfCliente);
-            printf("///           Email: %s                                         ///\n", clt->email);
-            printf("///           Telefone: %s                                      ///\n", clt->fone);
-            printf("///           Qtd. de Aluguéis: %i                                     ///\n", clt->quantidadeAlugueis);
-            printf("------------------------------------------------------------------\n");
-          }     
+      if(clt->status == 'C'){
+        printf("///           CPF: %s                                           ///\n", clt->cpfCliente);
+        printf("///           Nome: %s                                          ///\n", clt->nomeCliente);
+        printf("///           Email: %s                                         ///\n", clt->email);
+        printf("///           Telefone: %s                                      ///\n", clt->fone);
+        printf("///           Qtd. de Aluguéis: %i                                     ///\n", clt->quantidadeAlugueis);
+        printf("------------------------------------------------------------------\n");
+      }     
     }
     fclose(fp);
     free(clt);
 }
 
 void telaClientesCadastrados(void) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -196,9 +195,7 @@ void telaClientesCadastrados(void) {
 	printf("///                                                                       ///\n");
 	printf("///           Lista de clientes:                                          ///\n");
   listaClientesCadastrados();
- 
-  
-	printf("///                                                                       ///\n");
+ 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -211,24 +208,25 @@ void listaFantasiasCadastradas(void) {
     fant = (Fantasia*) malloc(sizeof(Fantasia));
     fp = fopen("fantasias.dat", "rb");
     while (fread(fant, sizeof(Fantasia), 1, fp)) {
-          if(fant->statusCadastro == 'C'){
-            printf("///           ID: %s                                                      ///\n", fant->idFantasia);
-            printf("///           Nome: %s                                                ///\n", fant->nomeFantasia);
-            printf("///           Valor: %.2f                                                ///\n", fant->valor);
-            printf("///           Qtd. de Aluguéis: %i                                         ///\n", fant->quantidadeAlugueis);
-          if (fant->status == 'D'){
-              printf("///           Disponível                                                  ///\n ------------------------------------------------------------------\n");
-            }  else{
-              printf("///           Alugada                                                     ///\n ------------------------------------------------------------------\n");
-            }
-          }     
+      if(fant->statusCadastro == 'C'){
+        printf("///           ID: %s                                                      ///\n", fant->idFantasia);
+        printf("///           Nome: %s                                                ///\n", fant->nomeFantasia);
+        printf("///           Valor: %.2f                                                ///\n", fant->valor);
+        printf("///           Qtd. de Aluguéis: %i                                         ///\n", fant->quantidadeAlugueis);
+        if (fant->status == 'D'){
+          printf("///           Disponível                                                  ///\n ------------------------------------------------------------------\n");
+        }  
+        else{
+          printf("///           Alugada                                                     ///\n ------------------------------------------------------------------\n");
+        }
+      }     
     }
     fclose(fp);
     free(fant);
 }
 
 void telaFantasiasCadastradas(void) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -258,7 +256,7 @@ void telaFantasiasCadastradas(void) {
 }
 
 void relatAlugueisPorCPF(char* cpf) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -292,14 +290,15 @@ void listaAlugueisPorCPF(char* cpf) {
     fp = fopen("alugueis.dat", "rb");
     while (fread(alg, sizeof(Aluguel), 1, fp)) {
       if(strcmp(alg->cpfCliente, cpf) == 0){
-            printf("///           Data: %s                                 ///\n", alg->data);
-            printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
-            printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
-            if (alg->status == 'N'){
-              printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
-            }  else{
-              printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
-            }
+        printf("///           Data: %s                                 ///\n", alg->data);
+        printf("///           ID da Fantasia: %s                                         ///\n", alg->idFantasia);
+        printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
+        if (alg->status == 'N'){
+          printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
+        }  
+        else{
+          printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
+        }
       }
     }
     fclose(fp);
@@ -307,7 +306,7 @@ void listaAlugueisPorCPF(char* cpf) {
 }
 
 void relatAlugueisPorID(char* id) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -341,14 +340,15 @@ void listaAlugueisPorID(char* id) {
     fp = fopen("alugueis.dat", "rb");
     while (fread(alg, sizeof(Aluguel), 1, fp)) {
       if(strcmp(alg->idFantasia, id) == 0){
-            printf("///           Data: %s                                 ///\n", alg->data);
-            printf("///           CPF: %s                                            ///\n", alg->cpfCliente);
-            printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
-            if (alg->status == 'N'){
-              printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
-            }  else{
-              printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
-            }
+        printf("///           Data: %s                                 ///\n", alg->data);
+        printf("///           CPF: %s                                            ///\n", alg->cpfCliente);
+        printf("///           Valor: %.2f                                               ///\n", alg->valorPago);
+        if (alg->status == 'N'){
+          printf("///           Pagamento pendente                                            ///\n ------------------------------------------------------------------\n");
+        }  
+        else{
+          printf("///           Pago                                                      ///\n ------------------------------------------------------------------\n");
+        }
       }
     }
     fclose(fp);
@@ -356,7 +356,7 @@ void listaAlugueisPorID(char* id) {
 }
 
 void telaFantasiasDisponiveis(void) {
-    system("clear");
+  system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -391,17 +391,18 @@ void listaFantasiasDisponiveis(void) {
     fant = (Fantasia*) malloc(sizeof(Fantasia));
     fp = fopen("fantasias.dat", "rb");
     while (fread(fant, sizeof(Fantasia), 1, fp)) {
-          if(fant->status == 'D' && fant->statusCadastro == 'C'){
-            printf("///           ID: %s                                                      ///\n", fant->idFantasia);
-            printf("///           Nome: %s                                                ///\n", fant->nomeFantasia);
-            printf("///           Valor: %.2f                                                ///\n", fant->valor);
-            printf("///           Qtd. de Aluguéis: %i                                         ///\n", fant->quantidadeAlugueis);
-          if (fant->status == 'D'){
-              printf("///           Disponível                                                  ///\n ------------------------------------------------------------------\n");
-            }  else{
-              printf("///           Alugada                                                     ///\n ------------------------------------------------------------------\n");
-            }
-          }     
+      if(fant->status == 'D' && fant->statusCadastro == 'C'){
+        printf("///           ID: %s                                                      ///\n", fant->idFantasia);
+        printf("///           Nome: %s                                                ///\n", fant->nomeFantasia);
+        printf("///           Valor: %.2f                                                ///\n", fant->valor);
+        printf("///           Qtd. de Aluguéis: %i                                         ///\n", fant->quantidadeAlugueis);
+        if (fant->status == 'D'){
+          printf("///           Disponível                                                  ///\n ------------------------------------------------------------------\n");
+        }  
+        else{
+          printf("///           Alugada                                                     ///\n ------------------------------------------------------------------\n");
+        }
+      }     
     }
     fclose(fp);
     free(fant);
